@@ -72,49 +72,72 @@ public class ContainersItemProviderAdapterFactory extends ContainersAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link containers.Container} instances.
+	 * This keeps track of the one adapter used for all {@link containers.Service} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ContainerItemProvider containerItemProvider;
+	protected ServiceItemProvider serviceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link containers.Container}.
+	 * This creates an adapter for a {@link containers.Service}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createContainerAdapter() {
-		if (containerItemProvider == null) {
-			containerItemProvider = new ContainerItemProvider(this);
+	public Adapter createServiceAdapter() {
+		if (serviceItemProvider == null) {
+			serviceItemProvider = new ServiceItemProvider(this);
 		}
 
-		return containerItemProvider;
+		return serviceItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link containers.LinkRelationship} instances.
+	 * This keeps track of the one adapter used for all {@link containers.NamedElement} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LinkRelationshipItemProvider linkRelationshipItemProvider;
+	protected NamedElementItemProvider namedElementItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link containers.LinkRelationship}.
+	 * This creates an adapter for a {@link containers.NamedElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createLinkRelationshipAdapter() {
-		if (linkRelationshipItemProvider == null) {
-			linkRelationshipItemProvider = new LinkRelationshipItemProvider(this);
+	public Adapter createNamedElementAdapter() {
+		if (namedElementItemProvider == null) {
+			namedElementItemProvider = new NamedElementItemProvider(this);
 		}
 
-		return linkRelationshipItemProvider;
+		return namedElementItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link containers.Compose} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ComposeItemProvider composeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link containers.Compose}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createComposeAdapter() {
+		if (composeItemProvider == null) {
+			composeItemProvider = new ComposeItemProvider(this);
+		}
+
+		return composeItemProvider;
 	}
 
 	/**
@@ -216,8 +239,9 @@ public class ContainersItemProviderAdapterFactory extends ContainersAdapterFacto
 	 * @generated
 	 */
 	public void dispose() {
-		if (containerItemProvider != null) containerItemProvider.dispose();
-		if (linkRelationshipItemProvider != null) linkRelationshipItemProvider.dispose();
+		if (serviceItemProvider != null) serviceItemProvider.dispose();
+		if (namedElementItemProvider != null) namedElementItemProvider.dispose();
+		if (composeItemProvider != null) composeItemProvider.dispose();
 	}
 
 }

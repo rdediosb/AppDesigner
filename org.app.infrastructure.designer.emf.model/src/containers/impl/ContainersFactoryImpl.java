@@ -56,8 +56,9 @@ public class ContainersFactoryImpl extends EFactoryImpl implements ContainersFac
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ContainersPackage.CONTAINER: return createContainer();
-			case ContainersPackage.LINK_RELATIONSHIP: return createLinkRelationship();
+			case ContainersPackage.SERVICE: return createService();
+			case ContainersPackage.NAMED_ELEMENT: return createNamedElement();
+			case ContainersPackage.COMPOSE: return createCompose();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -68,9 +69,9 @@ public class ContainersFactoryImpl extends EFactoryImpl implements ContainersFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public containers.Container createContainer() {
-		ContainerImpl container = new ContainerImpl();
-		return container;
+	public Service createService() {
+		ServiceImpl service = new ServiceImpl();
+		return service;
 	}
 
 	/**
@@ -78,9 +79,19 @@ public class ContainersFactoryImpl extends EFactoryImpl implements ContainersFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LinkRelationship createLinkRelationship() {
-		LinkRelationshipImpl linkRelationship = new LinkRelationshipImpl();
-		return linkRelationship;
+	public NamedElement createNamedElement() {
+		NamedElementImpl namedElement = new NamedElementImpl();
+		return namedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Compose createCompose() {
+		ComposeImpl compose = new ComposeImpl();
+		return compose;
 	}
 
 	/**

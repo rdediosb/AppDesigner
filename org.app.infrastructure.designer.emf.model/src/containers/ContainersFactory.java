@@ -22,22 +22,31 @@ public interface ContainersFactory extends EFactory {
 	ContainersFactory eINSTANCE = containers.impl.ContainersFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Container</em>'.
+	 * Returns a new object of class '<em>Service</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Container</em>'.
+	 * @return a new object of class '<em>Service</em>'.
 	 * @generated
 	 */
-	Container createContainer();
+	Service createService();
 
 	/**
-	 * Returns a new object of class '<em>Link Relationship</em>'.
+	 * Returns a new object of class '<em>Named Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Link Relationship</em>'.
+	 * @return a new object of class '<em>Named Element</em>'.
 	 * @generated
 	 */
-	LinkRelationship createLinkRelationship();
+	NamedElement createNamedElement();
+
+	/**
+	 * Returns a new object of class '<em>Compose</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Compose</em>'.
+	 * @generated
+	 */
+	Compose createCompose();
 
 	/**
 	 * Returns the package supported by this factory.

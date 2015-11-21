@@ -2,16 +2,16 @@
  */
 package containers.impl;
 
+import containers.Compose;
 import containers.ContainersFactory;
 import containers.ContainersPackage;
-import containers.LinkRelationship;
+import containers.NamedElement;
+import containers.Service;
 
-import model.ModelPackage;
-
-import model.impl.ModelPackageImpl;
-
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -27,14 +27,21 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass containerEClass = null;
+	private EClass serviceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass linkRelationshipEClass = null;
+	private EClass namedElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass composeEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -82,16 +89,11 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 
 		isInited = true;
 
-		// Obtain or create and register interdependencies
-		ModelPackageImpl theModelPackage = (ModelPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ModelPackage.eNS_URI) instanceof ModelPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ModelPackage.eNS_URI) : ModelPackage.eINSTANCE);
-
 		// Create package meta-data objects
 		theContainersPackage.createPackageContents();
-		theModelPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theContainersPackage.initializePackageContents();
-		theModelPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theContainersPackage.freeze();
@@ -107,8 +109,8 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getContainer() {
-		return containerEClass;
+	public EClass getService() {
+		return serviceEClass;
 	}
 
 	/**
@@ -116,8 +118,44 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getLinkRelationship() {
-		return linkRelationshipEClass;
+	public EReference getService_Link() {
+		return (EReference)serviceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNamedElement() {
+		return namedElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNamedElement_Name() {
+		return (EAttribute)namedElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCompose() {
+		return composeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompose_Services() {
+		return (EReference)composeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -148,9 +186,14 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 		isCreated = true;
 
 		// Create classes and their features
-		containerEClass = createEClass(CONTAINER);
+		serviceEClass = createEClass(SERVICE);
+		createEReference(serviceEClass, SERVICE__LINK);
 
-		linkRelationshipEClass = createEClass(LINK_RELATIONSHIP);
+		namedElementEClass = createEClass(NAMED_ELEMENT);
+		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
+
+		composeEClass = createEClass(COMPOSE);
+		createEReference(composeEClass, COMPOSE__SERVICES);
 	}
 
 	/**
@@ -176,21 +219,22 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
-		// Obtain other dependent packages
-		ModelPackage theModelPackage = (ModelPackage)EPackage.Registry.INSTANCE.getEPackage(ModelPackage.eNS_URI);
-
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		containerEClass.getESuperTypes().add(theModelPackage.getNode());
-		linkRelationshipEClass.getESuperTypes().add(theModelPackage.getAssociationRelationship());
+		serviceEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(containerEClass, containers.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(serviceEClass, Service.class, "Service", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getService_Link(), this.getService(), null, "link", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(linkRelationshipEClass, LinkRelationship.class, "LinkRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(composeEClass, Compose.class, "Compose", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCompose_Services(), this.getService(), null, "services", null, 0, -1, Compose.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

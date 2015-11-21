@@ -2,10 +2,10 @@
  */
 package containers;
 
-import model.ModelPackage;
-
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -57,32 +57,14 @@ public interface ContainersPackage extends EPackage {
 	ContainersPackage eINSTANCE = containers.impl.ContainersPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link containers.impl.ContainerImpl <em>Container</em>}' class.
+	 * The meta object id for the '{@link containers.impl.NamedElementImpl <em>Named Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see containers.impl.ContainerImpl
-	 * @see containers.impl.ContainersPackageImpl#getContainer()
+	 * @see containers.impl.NamedElementImpl
+	 * @see containers.impl.ContainersPackageImpl#getNamedElement()
 	 * @generated
 	 */
-	int CONTAINER = 0;
-
-	/**
-	 * The feature id for the '<em><b>Archimate Model</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER__ARCHIMATE_MODEL = ModelPackage.NODE__ARCHIMATE_MODEL;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER__ID = ModelPackage.NODE__ID;
+	int NAMED_ELEMENT = 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -91,98 +73,35 @@ public interface ContainersPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__NAME = ModelPackage.NODE__NAME;
+	int NAMED_ELEMENT__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * The number of structural features of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__DOCUMENTATION = ModelPackage.NODE__DOCUMENTATION;
+	int NAMED_ELEMENT_FEATURE_COUNT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * The number of operations of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__PROPERTIES = ModelPackage.NODE__PROPERTIES;
+	int NAMED_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
-	 * The number of structural features of the '<em>Container</em>' class.
+	 * The meta object id for the '{@link containers.impl.ServiceImpl <em>Service</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER_FEATURE_COUNT = ModelPackage.NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Get Adapter</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER___GET_ADAPTER__OBJECT = ModelPackage.NODE___GET_ADAPTER__OBJECT;
-
-	/**
-	 * The operation id for the '<em>Set Adapter</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER___SET_ADAPTER__OBJECT_OBJECT = ModelPackage.NODE___SET_ADAPTER__OBJECT_OBJECT;
-
-	/**
-	 * The operation id for the '<em>Get Copy</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER___GET_COPY = ModelPackage.NODE___GET_COPY;
-
-	/**
-	 * The number of operations of the '<em>Container</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER_OPERATION_COUNT = ModelPackage.NODE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link containers.impl.LinkRelationshipImpl <em>Link Relationship</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see containers.impl.LinkRelationshipImpl
-	 * @see containers.impl.ContainersPackageImpl#getLinkRelationship()
+	 * @see containers.impl.ServiceImpl
+	 * @see containers.impl.ContainersPackageImpl#getService()
 	 * @generated
 	 */
-	int LINK_RELATIONSHIP = 1;
-
-	/**
-	 * The feature id for the '<em><b>Archimate Model</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINK_RELATIONSHIP__ARCHIMATE_MODEL = ModelPackage.ASSOCIATION_RELATIONSHIP__ARCHIMATE_MODEL;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINK_RELATIONSHIP__ID = ModelPackage.ASSOCIATION_RELATIONSHIP__ID;
+	int SERVICE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -191,109 +110,135 @@ public interface ContainersPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_RELATIONSHIP__NAME = ModelPackage.ASSOCIATION_RELATIONSHIP__NAME;
+	int SERVICE__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * The feature id for the '<em><b>Link</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_RELATIONSHIP__DOCUMENTATION = ModelPackage.ASSOCIATION_RELATIONSHIP__DOCUMENTATION;
+	int SERVICE__LINK = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * The number of structural features of the '<em>Service</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_RELATIONSHIP__PROPERTIES = ModelPackage.ASSOCIATION_RELATIONSHIP__PROPERTIES;
+	int SERVICE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * The number of operations of the '<em>Service</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_RELATIONSHIP__SOURCE = ModelPackage.ASSOCIATION_RELATIONSHIP__SOURCE;
+	int SERVICE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * The meta object id for the '{@link containers.impl.ComposeImpl <em>Compose</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see containers.impl.ComposeImpl
+	 * @see containers.impl.ContainersPackageImpl#getCompose()
+	 * @generated
+	 */
+	int COMPOSE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Services</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_RELATIONSHIP__TARGET = ModelPackage.ASSOCIATION_RELATIONSHIP__TARGET;
+	int COMPOSE__SERVICES = 0;
 
 	/**
-	 * The number of structural features of the '<em>Link Relationship</em>' class.
+	 * The number of structural features of the '<em>Compose</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_RELATIONSHIP_FEATURE_COUNT = ModelPackage.ASSOCIATION_RELATIONSHIP_FEATURE_COUNT + 0;
+	int COMPOSE_FEATURE_COUNT = 1;
 
 	/**
-	 * The operation id for the '<em>Get Adapter</em>' operation.
+	 * The number of operations of the '<em>Compose</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_RELATIONSHIP___GET_ADAPTER__OBJECT = ModelPackage.ASSOCIATION_RELATIONSHIP___GET_ADAPTER__OBJECT;
-
-	/**
-	 * The operation id for the '<em>Set Adapter</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINK_RELATIONSHIP___SET_ADAPTER__OBJECT_OBJECT = ModelPackage.ASSOCIATION_RELATIONSHIP___SET_ADAPTER__OBJECT_OBJECT;
-
-	/**
-	 * The operation id for the '<em>Get Copy</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINK_RELATIONSHIP___GET_COPY = ModelPackage.ASSOCIATION_RELATIONSHIP___GET_COPY;
-
-	/**
-	 * The number of operations of the '<em>Link Relationship</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINK_RELATIONSHIP_OPERATION_COUNT = ModelPackage.ASSOCIATION_RELATIONSHIP_OPERATION_COUNT + 0;
+	int COMPOSE_OPERATION_COUNT = 0;
 
 
 	/**
-	 * Returns the meta object for class '{@link containers.Container <em>Container</em>}'.
+	 * Returns the meta object for class '{@link containers.Service <em>Service</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Container</em>'.
-	 * @see containers.Container
+	 * @return the meta object for class '<em>Service</em>'.
+	 * @see containers.Service
 	 * @generated
 	 */
-	EClass getContainer();
+	EClass getService();
 
 	/**
-	 * Returns the meta object for class '{@link containers.LinkRelationship <em>Link Relationship</em>}'.
+	 * Returns the meta object for the reference '{@link containers.Service#getLink <em>Link</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Link Relationship</em>'.
-	 * @see containers.LinkRelationship
+	 * @return the meta object for the reference '<em>Link</em>'.
+	 * @see containers.Service#getLink()
+	 * @see #getService()
 	 * @generated
 	 */
-	EClass getLinkRelationship();
+	EReference getService_Link();
+
+	/**
+	 * Returns the meta object for class '{@link containers.NamedElement <em>Named Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Named Element</em>'.
+	 * @see containers.NamedElement
+	 * @generated
+	 */
+	EClass getNamedElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link containers.NamedElement#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see containers.NamedElement#getName()
+	 * @see #getNamedElement()
+	 * @generated
+	 */
+	EAttribute getNamedElement_Name();
+
+	/**
+	 * Returns the meta object for class '{@link containers.Compose <em>Compose</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Compose</em>'.
+	 * @see containers.Compose
+	 * @generated
+	 */
+	EClass getCompose();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link containers.Compose#getServices <em>Services</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Services</em>'.
+	 * @see containers.Compose#getServices()
+	 * @see #getCompose()
+	 * @generated
+	 */
+	EReference getCompose_Services();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -319,24 +264,58 @@ public interface ContainersPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link containers.impl.ContainerImpl <em>Container</em>}' class.
+		 * The meta object literal for the '{@link containers.impl.ServiceImpl <em>Service</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see containers.impl.ContainerImpl
-		 * @see containers.impl.ContainersPackageImpl#getContainer()
+		 * @see containers.impl.ServiceImpl
+		 * @see containers.impl.ContainersPackageImpl#getService()
 		 * @generated
 		 */
-		EClass CONTAINER = eINSTANCE.getContainer();
+		EClass SERVICE = eINSTANCE.getService();
 
 		/**
-		 * The meta object literal for the '{@link containers.impl.LinkRelationshipImpl <em>Link Relationship</em>}' class.
+		 * The meta object literal for the '<em><b>Link</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see containers.impl.LinkRelationshipImpl
-		 * @see containers.impl.ContainersPackageImpl#getLinkRelationship()
 		 * @generated
 		 */
-		EClass LINK_RELATIONSHIP = eINSTANCE.getLinkRelationship();
+		EReference SERVICE__LINK = eINSTANCE.getService_Link();
+
+		/**
+		 * The meta object literal for the '{@link containers.impl.NamedElementImpl <em>Named Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see containers.impl.NamedElementImpl
+		 * @see containers.impl.ContainersPackageImpl#getNamedElement()
+		 * @generated
+		 */
+		EClass NAMED_ELEMENT = eINSTANCE.getNamedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
+
+		/**
+		 * The meta object literal for the '{@link containers.impl.ComposeImpl <em>Compose</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see containers.impl.ComposeImpl
+		 * @see containers.impl.ContainersPackageImpl#getCompose()
+		 * @generated
+		 */
+		EClass COMPOSE = eINSTANCE.getCompose();
+
+		/**
+		 * The meta object literal for the '<em><b>Services</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPOSE__SERVICES = eINSTANCE.getCompose_Services();
 
 	}
 

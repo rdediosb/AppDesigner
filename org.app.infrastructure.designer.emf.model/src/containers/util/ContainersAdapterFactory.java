@@ -4,18 +4,6 @@ package containers.util;
 
 import containers.*;
 
-import model.ArchimateComponent;
-import model.ArchimateElement;
-import model.ArchimateModelElement;
-import model.AssociationRelationship;
-import model.Documentable;
-import model.Identifier;
-import model.Nameable;
-import model.Node;
-import model.Properties;
-import model.Relationship;
-import model.TechnologyLayerElement;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -80,64 +68,16 @@ public class ContainersAdapterFactory extends AdapterFactoryImpl {
 	protected ContainersSwitch<Adapter> modelSwitch =
 		new ContainersSwitch<Adapter>() {
 			@Override
-			public Adapter caseContainer(Container object) {
-				return createContainerAdapter();
+			public Adapter caseService(Service object) {
+				return createServiceAdapter();
 			}
 			@Override
-			public Adapter caseLinkRelationship(LinkRelationship object) {
-				return createLinkRelationshipAdapter();
+			public Adapter caseNamedElement(NamedElement object) {
+				return createNamedElementAdapter();
 			}
 			@Override
-			public Adapter caseAdapter(model.Adapter object) {
-				return createAdapterAdapter();
-			}
-			@Override
-			public Adapter caseArchimateModelElement(ArchimateModelElement object) {
-				return createArchimateModelElementAdapter();
-			}
-			@Override
-			public Adapter caseIdentifier(Identifier object) {
-				return createIdentifierAdapter();
-			}
-			@Override
-			public Adapter caseCloneable(model.Cloneable object) {
-				return createCloneableAdapter();
-			}
-			@Override
-			public Adapter caseNameable(Nameable object) {
-				return createNameableAdapter();
-			}
-			@Override
-			public Adapter caseDocumentable(Documentable object) {
-				return createDocumentableAdapter();
-			}
-			@Override
-			public Adapter caseProperties(Properties object) {
-				return createPropertiesAdapter();
-			}
-			@Override
-			public Adapter caseArchimateComponent(ArchimateComponent object) {
-				return createArchimateComponentAdapter();
-			}
-			@Override
-			public Adapter caseArchimateElement(ArchimateElement object) {
-				return createArchimateElementAdapter();
-			}
-			@Override
-			public Adapter caseTechnologyLayerElement(TechnologyLayerElement object) {
-				return createTechnologyLayerElementAdapter();
-			}
-			@Override
-			public Adapter caseNode(Node object) {
-				return createNodeAdapter();
-			}
-			@Override
-			public Adapter caseRelationship(Relationship object) {
-				return createRelationshipAdapter();
-			}
-			@Override
-			public Adapter caseAssociationRelationship(AssociationRelationship object) {
-				return createAssociationRelationshipAdapter();
+			public Adapter caseCompose(Compose object) {
+				return createComposeAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -160,212 +100,44 @@ public class ContainersAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link containers.Container <em>Container</em>}'.
+	 * Creates a new adapter for an object of class '{@link containers.Service <em>Service</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see containers.Container
+	 * @see containers.Service
 	 * @generated
 	 */
-	public Adapter createContainerAdapter() {
+	public Adapter createServiceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link containers.LinkRelationship <em>Link Relationship</em>}'.
+	 * Creates a new adapter for an object of class '{@link containers.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see containers.LinkRelationship
+	 * @see containers.NamedElement
 	 * @generated
 	 */
-	public Adapter createLinkRelationshipAdapter() {
+	public Adapter createNamedElementAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link model.Adapter <em>Adapter</em>}'.
+	 * Creates a new adapter for an object of class '{@link containers.Compose <em>Compose</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see model.Adapter
+	 * @see containers.Compose
 	 * @generated
 	 */
-	public Adapter createAdapterAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link model.ArchimateModelElement <em>Archimate Model Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see model.ArchimateModelElement
-	 * @generated
-	 */
-	public Adapter createArchimateModelElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link model.Identifier <em>Identifier</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see model.Identifier
-	 * @generated
-	 */
-	public Adapter createIdentifierAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link model.Cloneable <em>Cloneable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see model.Cloneable
-	 * @generated
-	 */
-	public Adapter createCloneableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link model.Nameable <em>Nameable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see model.Nameable
-	 * @generated
-	 */
-	public Adapter createNameableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link model.Documentable <em>Documentable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see model.Documentable
-	 * @generated
-	 */
-	public Adapter createDocumentableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link model.Properties <em>Properties</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see model.Properties
-	 * @generated
-	 */
-	public Adapter createPropertiesAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link model.ArchimateComponent <em>Archimate Component</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see model.ArchimateComponent
-	 * @generated
-	 */
-	public Adapter createArchimateComponentAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link model.ArchimateElement <em>Archimate Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see model.ArchimateElement
-	 * @generated
-	 */
-	public Adapter createArchimateElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link model.TechnologyLayerElement <em>Technology Layer Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see model.TechnologyLayerElement
-	 * @generated
-	 */
-	public Adapter createTechnologyLayerElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link model.Node <em>Node</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see model.Node
-	 * @generated
-	 */
-	public Adapter createNodeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link model.Relationship <em>Relationship</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see model.Relationship
-	 * @generated
-	 */
-	public Adapter createRelationshipAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link model.AssociationRelationship <em>Association Relationship</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see model.AssociationRelationship
-	 * @generated
-	 */
-	public Adapter createAssociationRelationshipAdapter() {
+	public Adapter createComposeAdapter() {
 		return null;
 	}
 
