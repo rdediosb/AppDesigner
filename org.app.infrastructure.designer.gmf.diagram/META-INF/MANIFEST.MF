@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.infrastructure.designer.gmf.diagram
+Bundle-SymbolicName: org.app.infrastructure.designer.gmf.diagram;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Require-Bundle: org.eclipse.emf.ecore
