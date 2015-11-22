@@ -1,0 +1,7 @@
+# Tracing options for the org.app.infrastructure.designer.emf.diagram plug-in
+
+# Common issues
+org.app.infrastructure.designer.emf.diagram/debug=false
+
+# Visual IDs
+org.app.infrastructure.designer.emf.diagram/debug/visualID=false
