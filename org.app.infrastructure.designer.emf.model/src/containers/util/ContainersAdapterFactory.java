@@ -80,6 +80,10 @@ public class ContainersAdapterFactory extends AdapterFactoryImpl {
 				return createComposeAdapter();
 			}
 			@Override
+			public Adapter caseEnv(Env object) {
+				return createEnvAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -138,6 +142,20 @@ public class ContainersAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createComposeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link containers.Env <em>Env</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see containers.Env
+	 * @generated
+	 */
+	public Adapter createEnvAdapter() {
 		return null;
 	}
 

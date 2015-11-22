@@ -141,6 +141,29 @@ public class ContainersItemProviderAdapterFactory extends ContainersAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link containers.Env} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EnvItemProvider envItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link containers.Env}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEnvAdapter() {
+		if (envItemProvider == null) {
+			envItemProvider = new EnvItemProvider(this);
+		}
+
+		return envItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -242,6 +265,7 @@ public class ContainersItemProviderAdapterFactory extends ContainersAdapterFacto
 		if (serviceItemProvider != null) serviceItemProvider.dispose();
 		if (namedElementItemProvider != null) namedElementItemProvider.dispose();
 		if (composeItemProvider != null) composeItemProvider.dispose();
+		if (envItemProvider != null) envItemProvider.dispose();
 	}
 
 }

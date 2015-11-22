@@ -5,6 +5,7 @@ package containers.impl;
 import containers.Compose;
 import containers.ContainersFactory;
 import containers.ContainersPackage;
+import containers.Env;
 import containers.NamedElement;
 import containers.Service;
 
@@ -42,6 +43,13 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * @generated
 	 */
 	private EClass composeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass envEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -127,6 +135,24 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getService_Image() {
+		return (EAttribute)serviceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getService_Envs() {
+		return (EReference)serviceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNamedElement() {
 		return namedElementEClass;
 	}
@@ -163,6 +189,33 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getEnv() {
+		return envEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEnv_Key() {
+		return (EAttribute)envEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEnv_Value() {
+		return (EAttribute)envEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ContainersFactory getContainersFactory() {
 		return (ContainersFactory)getEFactoryInstance();
 	}
@@ -188,12 +241,18 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 		// Create classes and their features
 		serviceEClass = createEClass(SERVICE);
 		createEReference(serviceEClass, SERVICE__LINK);
+		createEAttribute(serviceEClass, SERVICE__IMAGE);
+		createEReference(serviceEClass, SERVICE__ENVS);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 
 		composeEClass = createEClass(COMPOSE);
 		createEReference(composeEClass, COMPOSE__SERVICES);
+
+		envEClass = createEClass(ENV);
+		createEAttribute(envEClass, ENV__KEY);
+		createEAttribute(envEClass, ENV__VALUE);
 	}
 
 	/**
@@ -229,12 +288,18 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 		// Initialize classes, features, and operations; add parameters
 		initEClass(serviceEClass, Service.class, "Service", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getService_Link(), this.getService(), null, "link", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getService_Image(), ecorePackage.getEString(), "image", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getService_Envs(), this.getEnv(), null, "envs", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(composeEClass, Compose.class, "Compose", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCompose_Services(), this.getService(), null, "services", null, 0, -1, Compose.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(envEClass, Env.class, "Env", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEnv_Key(), ecorePackage.getEString(), "key", null, 0, 1, Env.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEnv_Value(), ecorePackage.getEString(), "value", null, 0, 1, Env.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

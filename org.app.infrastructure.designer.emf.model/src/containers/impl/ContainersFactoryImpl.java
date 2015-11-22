@@ -59,6 +59,7 @@ public class ContainersFactoryImpl extends EFactoryImpl implements ContainersFac
 			case ContainersPackage.SERVICE: return createService();
 			case ContainersPackage.NAMED_ELEMENT: return createNamedElement();
 			case ContainersPackage.COMPOSE: return createCompose();
+			case ContainersPackage.ENV: return createEnv();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -92,6 +93,16 @@ public class ContainersFactoryImpl extends EFactoryImpl implements ContainersFac
 	public Compose createCompose() {
 		ComposeImpl compose = new ComposeImpl();
 		return compose;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Env createEnv() {
+		EnvImpl env = new EnvImpl();
+		return env;
 	}
 
 	/**

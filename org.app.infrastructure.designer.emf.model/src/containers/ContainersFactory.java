@@ -49,6 +49,15 @@ public interface ContainersFactory extends EFactory {
 	Compose createCompose();
 
 	/**
+	 * Returns a new object of class '<em>Env</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Env</em>'.
+	 * @generated
+	 */
+	Env createEnv();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
