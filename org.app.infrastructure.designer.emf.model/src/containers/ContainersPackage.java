@@ -158,13 +158,22 @@ public interface ContainersPackage extends EPackage {
 	int SERVICE__PORTS = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Command</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__COMMAND = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Service</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int SERVICE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Service</em>' class.
@@ -410,6 +419,17 @@ public interface ContainersPackage extends EPackage {
 	EReference getService_Ports();
 
 	/**
+	 * Returns the meta object for the attribute '{@link containers.Service#getCommand <em>Command</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Command</em>'.
+	 * @see containers.Service#getCommand()
+	 * @see #getService()
+	 * @generated
+	 */
+	EAttribute getService_Command();
+
+	/**
 	 * Returns the meta object for class '{@link containers.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -597,6 +617,14 @@ public interface ContainersPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SERVICE__PORTS = eINSTANCE.getService_Ports();
+
+		/**
+		 * The meta object literal for the '<em><b>Command</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVICE__COMMAND = eINSTANCE.getService_Command();
 
 		/**
 		 * The meta object literal for the '{@link containers.impl.NamedElementImpl <em>Named Element</em>}' class.

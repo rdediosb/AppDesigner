@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link containers.Service#getEnvs <em>Envs</em>}</li>
  *   <li>{@link containers.Service#getVolumes <em>Volumes</em>}</li>
  *   <li>{@link containers.Service#getPorts <em>Ports</em>}</li>
+ *   <li>{@link containers.Service#getCommand <em>Command</em>}</li>
  * </ul>
  *
  * @see containers.ContainersPackage#getService()
@@ -125,5 +126,31 @@ public interface Service extends NamedElement {
 	 * @generated
 	 */
 	EList<PortMapping> getPorts();
+
+	/**
+	 * Returns the value of the '<em><b>Command</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Command</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Command</em>' attribute.
+	 * @see #setCommand(String)
+	 * @see containers.ContainersPackage#getService_Command()
+	 * @model
+	 * @generated
+	 */
+	String getCommand();
+
+	/**
+	 * Sets the value of the '{@link containers.Service#getCommand <em>Command</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Command</em>' attribute.
+	 * @see #getCommand()
+	 * @generated
+	 */
+	void setCommand(String value);
 
 } // Service

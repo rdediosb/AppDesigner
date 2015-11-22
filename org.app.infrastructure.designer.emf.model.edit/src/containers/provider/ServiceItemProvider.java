@@ -50,6 +50,7 @@ public class ServiceItemProvider extends NamedElementItemProvider {
 			addLinkPropertyDescriptor(object);
 			addImagePropertyDescriptor(object);
 			addVolumesPropertyDescriptor(object);
+			addCommandPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -116,6 +117,28 @@ public class ServiceItemProvider extends NamedElementItemProvider {
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Command feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCommandPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Service_command_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Service_command_feature", "_UI_Service_type"),
+				 ContainersPackage.Literals.SERVICE__COMMAND,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -190,6 +213,7 @@ public class ServiceItemProvider extends NamedElementItemProvider {
 
 		switch (notification.getFeatureID(Service.class)) {
 			case ContainersPackage.SERVICE__IMAGE:
+			case ContainersPackage.SERVICE__COMMAND:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ContainersPackage.SERVICE__ENVS:

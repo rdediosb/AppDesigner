@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link containers.impl.ServiceImpl#getEnvs <em>Envs</em>}</li>
  *   <li>{@link containers.impl.ServiceImpl#getVolumes <em>Volumes</em>}</li>
  *   <li>{@link containers.impl.ServiceImpl#getPorts <em>Ports</em>}</li>
+ *   <li>{@link containers.impl.ServiceImpl#getCommand <em>Command</em>}</li>
  * </ul>
  *
  * @generated
@@ -96,6 +97,26 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 	 * @ordered
 	 */
 	protected EList<PortMapping> ports;
+
+	/**
+	 * The default value of the '{@link #getCommand() <em>Command</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCommand()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String COMMAND_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCommand() <em>Command</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCommand()
+	 * @generated
+	 * @ordered
+	 */
+	protected String command = COMMAND_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -216,6 +237,27 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getCommand() {
+		return command;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCommand(String newCommand) {
+		String oldCommand = command;
+		command = newCommand;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ContainersPackage.SERVICE__COMMAND, oldCommand, command));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -246,6 +288,8 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 				return getVolumes();
 			case ContainersPackage.SERVICE__PORTS:
 				return getPorts();
+			case ContainersPackage.SERVICE__COMMAND:
+				return getCommand();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -277,6 +321,9 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 				getPorts().clear();
 				getPorts().addAll((Collection<? extends PortMapping>)newValue);
 				return;
+			case ContainersPackage.SERVICE__COMMAND:
+				setCommand((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -304,6 +351,9 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 			case ContainersPackage.SERVICE__PORTS:
 				getPorts().clear();
 				return;
+			case ContainersPackage.SERVICE__COMMAND:
+				setCommand(COMMAND_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -326,6 +376,8 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 				return volumes != null && !volumes.isEmpty();
 			case ContainersPackage.SERVICE__PORTS:
 				return ports != null && !ports.isEmpty();
+			case ContainersPackage.SERVICE__COMMAND:
+				return COMMAND_EDEFAULT == null ? command != null : !COMMAND_EDEFAULT.equals(command);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -342,6 +394,8 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (image: ");
 		result.append(image);
+		result.append(", command: ");
+		result.append(command);
 		result.append(')');
 		return result.toString();
 	}
