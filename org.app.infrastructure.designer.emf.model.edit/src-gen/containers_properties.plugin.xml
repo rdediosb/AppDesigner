@@ -1,25 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 
-<!--
--->
+ <plugin>
 
-<plugin>
-
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated containers -->
-      <factory
-            uri="https://github.com/rdediosb/AppDesigner"
-            class="containers.provider.ContainersItemProviderAdapterFactory"
-            supportedTypes=
-              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-               org.eclipse.emf.edit.provider.ITreeItemContentProvider
-               org.eclipse.emf.edit.provider.IItemLabelProvider
-               org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
-
- <!-- EEF extensions -->
+  <!-- EEF extensions -->
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
             uri="https://github.com/rdediosb/AppDesigner"
@@ -37,7 +21,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.app.infrastructure.designer.emf.diagram"
+            contributorId="containers.properties"
             labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
@@ -53,18 +37,19 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <propertyTabs
-            contributorId="org.app.infrastructure.designer.emf.diagram">
+            contributorId="containers.properties">
          <propertyTab
                id="Base"
-               label=""
-               category="domain">
+               label="Base"
+               category="default">
          </propertyTab>
+
       </propertyTabs>
    </extension>
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
-            contributorId="org.app.infrastructure.designer.emf.diagram">
+            contributorId="containers.properties">
          <propertySection
                class="containers.parts.forms.ServicePropertiesEditionPartForm"
                filter="containers.providers.ServicePropertiesEditionProvider$EditionFilter"
@@ -103,4 +88,4 @@
          </propertySection>
       </propertySections>
    </extension>
-</plugin>
+ </plugin>
