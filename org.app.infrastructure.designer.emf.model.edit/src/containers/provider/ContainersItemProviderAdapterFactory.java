@@ -164,6 +164,52 @@ public class ContainersItemProviderAdapterFactory extends ContainersAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link containers.Volume} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VolumeItemProvider volumeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link containers.Volume}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVolumeAdapter() {
+		if (volumeItemProvider == null) {
+			volumeItemProvider = new VolumeItemProvider(this);
+		}
+
+		return volumeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link containers.PortMapping} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PortMappingItemProvider portMappingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link containers.PortMapping}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPortMappingAdapter() {
+		if (portMappingItemProvider == null) {
+			portMappingItemProvider = new PortMappingItemProvider(this);
+		}
+
+		return portMappingItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -266,6 +312,8 @@ public class ContainersItemProviderAdapterFactory extends ContainersAdapterFacto
 		if (namedElementItemProvider != null) namedElementItemProvider.dispose();
 		if (composeItemProvider != null) composeItemProvider.dispose();
 		if (envItemProvider != null) envItemProvider.dispose();
+		if (volumeItemProvider != null) volumeItemProvider.dispose();
+		if (portMappingItemProvider != null) portMappingItemProvider.dispose();
 	}
 
 }

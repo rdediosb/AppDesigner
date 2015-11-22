@@ -58,6 +58,24 @@ public interface ContainersFactory extends EFactory {
 	Env createEnv();
 
 	/**
+	 * Returns a new object of class '<em>Volume</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Volume</em>'.
+	 * @generated
+	 */
+	Volume createVolume();
+
+	/**
+	 * Returns a new object of class '<em>Port Mapping</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Port Mapping</em>'.
+	 * @generated
+	 */
+	PortMapping createPortMapping();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

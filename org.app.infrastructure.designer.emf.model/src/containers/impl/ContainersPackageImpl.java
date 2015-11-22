@@ -7,8 +7,10 @@ import containers.ContainersFactory;
 import containers.ContainersPackage;
 import containers.Env;
 import containers.NamedElement;
+import containers.PortMapping;
 import containers.Service;
 
+import containers.Volume;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -50,6 +52,20 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * @generated
 	 */
 	private EClass envEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass volumeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass portMappingEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -153,6 +169,24 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getService_Volumes() {
+		return (EReference)serviceEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getService_Ports() {
+		return (EReference)serviceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNamedElement() {
 		return namedElementEClass;
 	}
@@ -216,6 +250,42 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getVolume() {
+		return volumeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPortMapping() {
+		return portMappingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPortMapping_External() {
+		return (EAttribute)portMappingEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPortMapping_Internal() {
+		return (EAttribute)portMappingEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ContainersFactory getContainersFactory() {
 		return (ContainersFactory)getEFactoryInstance();
 	}
@@ -243,6 +313,8 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 		createEReference(serviceEClass, SERVICE__LINK);
 		createEAttribute(serviceEClass, SERVICE__IMAGE);
 		createEReference(serviceEClass, SERVICE__ENVS);
+		createEReference(serviceEClass, SERVICE__VOLUMES);
+		createEReference(serviceEClass, SERVICE__PORTS);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
@@ -253,6 +325,12 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 		envEClass = createEClass(ENV);
 		createEAttribute(envEClass, ENV__KEY);
 		createEAttribute(envEClass, ENV__VALUE);
+
+		volumeEClass = createEClass(VOLUME);
+
+		portMappingEClass = createEClass(PORT_MAPPING);
+		createEAttribute(portMappingEClass, PORT_MAPPING__EXTERNAL);
+		createEAttribute(portMappingEClass, PORT_MAPPING__INTERNAL);
 	}
 
 	/**
@@ -284,12 +362,15 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 
 		// Add supertypes to classes
 		serviceEClass.getESuperTypes().add(this.getNamedElement());
+		volumeEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(serviceEClass, Service.class, "Service", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getService_Link(), this.getService(), null, "link", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getService_Image(), ecorePackage.getEString(), "image", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getService_Envs(), this.getEnv(), null, "envs", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getService_Volumes(), this.getVolume(), null, "volumes", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getService_Ports(), this.getPortMapping(), null, "ports", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -300,6 +381,12 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 		initEClass(envEClass, Env.class, "Env", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEnv_Key(), ecorePackage.getEString(), "key", null, 0, 1, Env.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEnv_Value(), ecorePackage.getEString(), "value", null, 0, 1, Env.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(volumeEClass, Volume.class, "Volume", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(portMappingEClass, PortMapping.class, "PortMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPortMapping_External(), ecorePackage.getEInt(), "external", null, 0, 1, PortMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPortMapping_Internal(), ecorePackage.getEInt(), "internal", null, 0, 1, PortMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

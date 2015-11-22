@@ -84,6 +84,14 @@ public class ContainersAdapterFactory extends AdapterFactoryImpl {
 				return createEnvAdapter();
 			}
 			@Override
+			public Adapter caseVolume(Volume object) {
+				return createVolumeAdapter();
+			}
+			@Override
+			public Adapter casePortMapping(PortMapping object) {
+				return createPortMappingAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -156,6 +164,34 @@ public class ContainersAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEnvAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link containers.Volume <em>Volume</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see containers.Volume
+	 * @generated
+	 */
+	public Adapter createVolumeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link containers.PortMapping <em>Port Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see containers.PortMapping
+	 * @generated
+	 */
+	public Adapter createPortMappingAdapter() {
 		return null;
 	}
 

@@ -60,6 +60,8 @@ public class ContainersFactoryImpl extends EFactoryImpl implements ContainersFac
 			case ContainersPackage.NAMED_ELEMENT: return createNamedElement();
 			case ContainersPackage.COMPOSE: return createCompose();
 			case ContainersPackage.ENV: return createEnv();
+			case ContainersPackage.VOLUME: return createVolume();
+			case ContainersPackage.PORT_MAPPING: return createPortMapping();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -103,6 +105,26 @@ public class ContainersFactoryImpl extends EFactoryImpl implements ContainersFac
 	public Env createEnv() {
 		EnvImpl env = new EnvImpl();
 		return env;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Volume createVolume() {
+		VolumeImpl volume = new VolumeImpl();
+		return volume;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PortMapping createPortMapping() {
+		PortMappingImpl portMapping = new PortMappingImpl();
+		return portMapping;
 	}
 
 	/**

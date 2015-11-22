@@ -140,13 +140,31 @@ public interface ContainersPackage extends EPackage {
 	int SERVICE__ENVS = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Volumes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__VOLUMES = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Ports</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__PORTS = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Service</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int SERVICE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Service</em>' class.
@@ -243,6 +261,90 @@ public interface ContainersPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link containers.impl.VolumeImpl <em>Volume</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see containers.impl.VolumeImpl
+	 * @see containers.impl.ContainersPackageImpl#getVolume()
+	 * @generated
+	 */
+	int VOLUME = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Volume</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Volume</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VOLUME_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link containers.impl.PortMappingImpl <em>Port Mapping</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see containers.impl.PortMappingImpl
+	 * @see containers.impl.ContainersPackageImpl#getPortMapping()
+	 * @generated
+	 */
+	int PORT_MAPPING = 5;
+
+	/**
+	 * The feature id for the '<em><b>External</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_MAPPING__EXTERNAL = 0;
+
+	/**
+	 * The feature id for the '<em><b>Internal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_MAPPING__INTERNAL = 1;
+
+	/**
+	 * The number of structural features of the '<em>Port Mapping</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_MAPPING_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Port Mapping</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_MAPPING_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link containers.Service <em>Service</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -284,6 +386,28 @@ public interface ContainersPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getService_Envs();
+
+	/**
+	 * Returns the meta object for the reference list '{@link containers.Service#getVolumes <em>Volumes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Volumes</em>'.
+	 * @see containers.Service#getVolumes()
+	 * @see #getService()
+	 * @generated
+	 */
+	EReference getService_Volumes();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link containers.Service#getPorts <em>Ports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Ports</em>'.
+	 * @see containers.Service#getPorts()
+	 * @see #getService()
+	 * @generated
+	 */
+	EReference getService_Ports();
 
 	/**
 	 * Returns the meta object for class '{@link containers.NamedElement <em>Named Element</em>}'.
@@ -360,6 +484,48 @@ public interface ContainersPackage extends EPackage {
 	EAttribute getEnv_Value();
 
 	/**
+	 * Returns the meta object for class '{@link containers.Volume <em>Volume</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Volume</em>'.
+	 * @see containers.Volume
+	 * @generated
+	 */
+	EClass getVolume();
+
+	/**
+	 * Returns the meta object for class '{@link containers.PortMapping <em>Port Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Port Mapping</em>'.
+	 * @see containers.PortMapping
+	 * @generated
+	 */
+	EClass getPortMapping();
+
+	/**
+	 * Returns the meta object for the attribute '{@link containers.PortMapping#getExternal <em>External</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>External</em>'.
+	 * @see containers.PortMapping#getExternal()
+	 * @see #getPortMapping()
+	 * @generated
+	 */
+	EAttribute getPortMapping_External();
+
+	/**
+	 * Returns the meta object for the attribute '{@link containers.PortMapping#getInternal <em>Internal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Internal</em>'.
+	 * @see containers.PortMapping#getInternal()
+	 * @see #getPortMapping()
+	 * @generated
+	 */
+	EAttribute getPortMapping_Internal();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -415,6 +581,22 @@ public interface ContainersPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SERVICE__ENVS = eINSTANCE.getService_Envs();
+
+		/**
+		 * The meta object literal for the '<em><b>Volumes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVICE__VOLUMES = eINSTANCE.getService_Volumes();
+
+		/**
+		 * The meta object literal for the '<em><b>Ports</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVICE__PORTS = eINSTANCE.getService_Ports();
 
 		/**
 		 * The meta object literal for the '{@link containers.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -477,6 +659,42 @@ public interface ContainersPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ENV__VALUE = eINSTANCE.getEnv_Value();
+
+		/**
+		 * The meta object literal for the '{@link containers.impl.VolumeImpl <em>Volume</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see containers.impl.VolumeImpl
+		 * @see containers.impl.ContainersPackageImpl#getVolume()
+		 * @generated
+		 */
+		EClass VOLUME = eINSTANCE.getVolume();
+
+		/**
+		 * The meta object literal for the '{@link containers.impl.PortMappingImpl <em>Port Mapping</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see containers.impl.PortMappingImpl
+		 * @see containers.impl.ContainersPackageImpl#getPortMapping()
+		 * @generated
+		 */
+		EClass PORT_MAPPING = eINSTANCE.getPortMapping();
+
+		/**
+		 * The meta object literal for the '<em><b>External</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PORT_MAPPING__EXTERNAL = eINSTANCE.getPortMapping_External();
+
+		/**
+		 * The meta object literal for the '<em><b>Internal</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PORT_MAPPING__INTERNAL = eINSTANCE.getPortMapping_Internal();
 
 	}
 
