@@ -14,9 +14,6 @@ public class ContainersMessages extends NLS {
 	private static final String BUNDLE_NAME = "containers.providers.containersMessages"; //$NON-NLS-1$
 
 	
-	public static String ServicePropertiesEditionPart_PropertiesGroupLabel;
-
-	
 	public static String NamedElementPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -68,12 +65,6 @@ public class ContainersMessages extends NLS {
 	
 	public static String PortMapping_Part_Title;
 
-
-	
-	public static String ServicePropertiesEditionPart_NameLabel;
-
-	
-	public static String ServicePropertiesEditionPart_LinkLabel;
 
 	
 	public static String ServicePropertiesEditionPart_ImageLabel;

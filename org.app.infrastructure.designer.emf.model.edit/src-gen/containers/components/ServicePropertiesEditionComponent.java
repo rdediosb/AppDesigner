@@ -75,11 +75,6 @@ public class ServicePropertiesEditionComponent extends SinglePartPropertiesEditi
 
 	
 	/**
-	 * Settings for link EObjectFlatComboViewer
-	 */
-	private EObjectFlatComboSettings linkSettings;
-	
-	/**
 	 * Settings for envs ReferencesTable
 	 */
 	protected ReferencesTableSettings envsSettings;
@@ -121,54 +116,27 @@ public class ServicePropertiesEditionComponent extends SinglePartPropertiesEditi
 			final Service service = (Service)elt;
 			final ServicePropertiesEditionPart basePart = (ServicePropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(ContainersViewsRepository.Service.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, service.getName()));
-			
-			if (isAccessible(ContainersViewsRepository.Service.Properties.link)) {
-				// init part
-				linkSettings = new EObjectFlatComboSettings(service, ContainersPackage.eINSTANCE.getService_Link());
-				basePart.initLink(linkSettings);
-				// set the button mode
-				basePart.setLinkButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(ContainersViewsRepository.Service.Properties.image))
+			if (isAccessible(ContainersViewsRepository.Service.image))
 				basePart.setImage(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, service.getImage()));
 			
-			if (isAccessible(ContainersViewsRepository.Service.Properties.envs)) {
+			if (isAccessible(ContainersViewsRepository.Service.envs)) {
 				envsSettings = new ReferencesTableSettings(service, ContainersPackage.eINSTANCE.getService_Envs());
 				basePart.initEnvs(envsSettings);
 			}
-			if (isAccessible(ContainersViewsRepository.Service.Properties.volumes)) {
+			if (isAccessible(ContainersViewsRepository.Service.volumes)) {
 				volumesSettings = new ReferencesTableSettings(service, ContainersPackage.eINSTANCE.getService_Volumes());
 				basePart.initVolumes(volumesSettings);
 			}
-			if (isAccessible(ContainersViewsRepository.Service.Properties.ports)) {
+			if (isAccessible(ContainersViewsRepository.Service.ports)) {
 				portsSettings = new ReferencesTableSettings(service, ContainersPackage.eINSTANCE.getService_Ports());
 				basePart.initPorts(portsSettings);
 			}
-			if (isAccessible(ContainersViewsRepository.Service.Properties.command))
+			if (isAccessible(ContainersViewsRepository.Service.command))
 				basePart.setCommand(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, service.getCommand()));
 			
 			// init filters
 			
-			if (isAccessible(ContainersViewsRepository.Service.Properties.link)) {
-				basePart.addFilterToLink(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Service); //$NON-NLS-1$ 
-					}
-					
-				});
-				// Start of user code for additional businessfilters for link
-				// End of user code
-			}
-			
-			if (isAccessible(ContainersViewsRepository.Service.Properties.envs)) {
+			if (isAccessible(ContainersViewsRepository.Service.envs)) {
 				basePart.addFilterToEnvs(new ViewerFilter() {
 					/**
 					 * {@inheritDoc}
@@ -183,12 +151,12 @@ public class ServicePropertiesEditionComponent extends SinglePartPropertiesEditi
 				// Start of user code for additional businessfilters for envs
 				// End of user code
 			}
-			if (isAccessible(ContainersViewsRepository.Service.Properties.volumes)) {
+			if (isAccessible(ContainersViewsRepository.Service.volumes)) {
 				basePart.addFilterToVolumes(new EObjectFilter(ContainersPackage.Literals.VOLUME));
 				// Start of user code for additional businessfilters for volumes
 				// End of user code
 			}
-			if (isAccessible(ContainersViewsRepository.Service.Properties.ports)) {
+			if (isAccessible(ContainersViewsRepository.Service.ports)) {
 				basePart.addFilterToPorts(new ViewerFilter() {
 					/**
 					 * {@inheritDoc}
@@ -219,32 +187,24 @@ public class ServicePropertiesEditionComponent extends SinglePartPropertiesEditi
 
 
 
-
-
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == ContainersViewsRepository.Service.Properties.name) {
-			return ContainersPackage.eINSTANCE.getNamedElement_Name();
-		}
-		if (editorKey == ContainersViewsRepository.Service.Properties.link) {
-			return ContainersPackage.eINSTANCE.getService_Link();
-		}
-		if (editorKey == ContainersViewsRepository.Service.Properties.image) {
+		if (editorKey == ContainersViewsRepository.Service.image) {
 			return ContainersPackage.eINSTANCE.getService_Image();
 		}
-		if (editorKey == ContainersViewsRepository.Service.Properties.envs) {
+		if (editorKey == ContainersViewsRepository.Service.envs) {
 			return ContainersPackage.eINSTANCE.getService_Envs();
 		}
-		if (editorKey == ContainersViewsRepository.Service.Properties.volumes) {
+		if (editorKey == ContainersViewsRepository.Service.volumes) {
 			return ContainersPackage.eINSTANCE.getService_Volumes();
 		}
-		if (editorKey == ContainersViewsRepository.Service.Properties.ports) {
+		if (editorKey == ContainersViewsRepository.Service.ports) {
 			return ContainersPackage.eINSTANCE.getService_Ports();
 		}
-		if (editorKey == ContainersViewsRepository.Service.Properties.command) {
+		if (editorKey == ContainersViewsRepository.Service.command) {
 			return ContainersPackage.eINSTANCE.getService_Command();
 		}
 		return super.associatedFeature(editorKey);
@@ -257,29 +217,10 @@ public class ServicePropertiesEditionComponent extends SinglePartPropertiesEditi
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Service service = (Service)semanticObject;
-		if (ContainersViewsRepository.Service.Properties.name == event.getAffectedEditor()) {
-			service.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
-		}
-		if (ContainersViewsRepository.Service.Properties.link == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				linkSettings.setToReference((Service)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				Service eObject = ContainersFactory.eINSTANCE.createService();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				linkSettings.setToReference(eObject);
-			}
-		}
-		if (ContainersViewsRepository.Service.Properties.image == event.getAffectedEditor()) {
+		if (ContainersViewsRepository.Service.image == event.getAffectedEditor()) {
 			service.setImage((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (ContainersViewsRepository.Service.Properties.envs == event.getAffectedEditor()) {
+		if (ContainersViewsRepository.Service.envs == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, envsSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
@@ -304,7 +245,7 @@ public class ServicePropertiesEditionComponent extends SinglePartPropertiesEditi
 				envsSettings.move(event.getNewIndex(), (Env) event.getNewValue());
 			}
 		}
-		if (ContainersViewsRepository.Service.Properties.volumes == event.getAffectedEditor()) {
+		if (ContainersViewsRepository.Service.volumes == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Volume) {
 					volumesSettings.addToReference((EObject) event.getNewValue());
@@ -315,7 +256,7 @@ public class ServicePropertiesEditionComponent extends SinglePartPropertiesEditi
 				volumesSettings.move(event.getNewIndex(), (Volume) event.getNewValue());
 			}
 		}
-		if (ContainersViewsRepository.Service.Properties.ports == event.getAffectedEditor()) {
+		if (ContainersViewsRepository.Service.ports == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, portsSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
@@ -340,7 +281,7 @@ public class ServicePropertiesEditionComponent extends SinglePartPropertiesEditi
 				portsSettings.move(event.getNewIndex(), (PortMapping) event.getNewValue());
 			}
 		}
-		if (ContainersViewsRepository.Service.Properties.command == event.getAffectedEditor()) {
+		if (ContainersViewsRepository.Service.command == event.getAffectedEditor()) {
 			service.setCommand((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
@@ -353,29 +294,20 @@ public class ServicePropertiesEditionComponent extends SinglePartPropertiesEditi
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ServicePropertiesEditionPart basePart = (ServicePropertiesEditionPart)editingPart;
-			if (ContainersPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ContainersViewsRepository.Service.Properties.name)) {
-				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
-				} else {
-					basePart.setName("");
-				}
-			}
-			if (ContainersPackage.eINSTANCE.getService_Link().equals(msg.getFeature()) && basePart != null && isAccessible(ContainersViewsRepository.Service.Properties.link))
-				basePart.setLink((EObject)msg.getNewValue());
-			if (ContainersPackage.eINSTANCE.getService_Image().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ContainersViewsRepository.Service.Properties.image)) {
+			if (ContainersPackage.eINSTANCE.getService_Image().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ContainersViewsRepository.Service.image)) {
 				if (msg.getNewValue() != null) {
 					basePart.setImage(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setImage("");
 				}
 			}
-			if (ContainersPackage.eINSTANCE.getService_Envs().equals(msg.getFeature()) && isAccessible(ContainersViewsRepository.Service.Properties.envs))
+			if (ContainersPackage.eINSTANCE.getService_Envs().equals(msg.getFeature()) && isAccessible(ContainersViewsRepository.Service.envs))
 				basePart.updateEnvs();
-			if (ContainersPackage.eINSTANCE.getService_Volumes().equals(msg.getFeature())  && isAccessible(ContainersViewsRepository.Service.Properties.volumes))
+			if (ContainersPackage.eINSTANCE.getService_Volumes().equals(msg.getFeature())  && isAccessible(ContainersViewsRepository.Service.volumes))
 				basePart.updateVolumes();
-			if (ContainersPackage.eINSTANCE.getService_Ports().equals(msg.getFeature()) && isAccessible(ContainersViewsRepository.Service.Properties.ports))
+			if (ContainersPackage.eINSTANCE.getService_Ports().equals(msg.getFeature()) && isAccessible(ContainersViewsRepository.Service.ports))
 				basePart.updatePorts();
-			if (ContainersPackage.eINSTANCE.getService_Command().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ContainersViewsRepository.Service.Properties.command)) {
+			if (ContainersPackage.eINSTANCE.getService_Command().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(ContainersViewsRepository.Service.command)) {
 				if (msg.getNewValue() != null) {
 					basePart.setCommand(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -394,8 +326,6 @@ public class ServicePropertiesEditionComponent extends SinglePartPropertiesEditi
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			ContainersPackage.eINSTANCE.getNamedElement_Name(),
-			ContainersPackage.eINSTANCE.getService_Link(),
 			ContainersPackage.eINSTANCE.getService_Image(),
 			ContainersPackage.eINSTANCE.getService_Envs(),
 			ContainersPackage.eINSTANCE.getService_Volumes(),
@@ -415,21 +345,14 @@ public class ServicePropertiesEditionComponent extends SinglePartPropertiesEditi
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (ContainersViewsRepository.Service.Properties.name == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(ContainersPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(ContainersPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
-				}
-				if (ContainersViewsRepository.Service.Properties.image == event.getAffectedEditor()) {
+				if (ContainersViewsRepository.Service.image == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(ContainersPackage.eINSTANCE.getService_Image().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(ContainersPackage.eINSTANCE.getService_Image().getEAttributeType(), newValue);
 				}
-				if (ContainersViewsRepository.Service.Properties.command == event.getAffectedEditor()) {
+				if (ContainersViewsRepository.Service.command == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(ContainersPackage.eINSTANCE.getService_Command().getEAttributeType(), (String)newValue);

@@ -24,67 +24,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public interface ServicePropertiesEditionPart {
 
 	/**
-	 * @return the name
-	 * 
-	 */
-	public String getName();
-
-	/**
-	 * Defines a new name
-	 * @param newValue the new name to set
-	 * 
-	 */
-	public void setName(String newValue);
-
-
-	/**
-	 * @return the link
-	 * 
-	 */
-	public EObject getLink();
-
-	/**
-	 * Init the link
-	 * @param settings the combo setting
-	 */
-	public void initLink(EObjectFlatComboSettings settings);
-
-	/**
-	 * Defines a new link
-	 * @param newValue the new link to set
-	 * 
-	 */
-	public void setLink(EObject newValue);
-
-	/**
-	 * Defines the button mode
-	 * @param newValue the new mode to set
-	 * 
-	 */
-	public void setLinkButtonMode(ButtonsModeEnum newValue);
-
-	/**
-	 * Adds the given filter to the link edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToLink(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the link edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToLink(ViewerFilter filter);
-
-
-	/**
 	 * @return the image
 	 * 
 	 */

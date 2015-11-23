@@ -19,31 +19,20 @@ public class ContainersViewsRepository {
 	 * 
 	 */
 	public static class Service {
-		public static class Properties {
 	
-			
-			public static String name = "containers::Service::properties::name";
-			
-			
-			public static String link = "containers::Service::properties::link";
-			
-			
-			public static String image = "containers::Service::properties::image";
-			
-			
-			public static String envs = "containers::Service::properties::envs";
-			
-			
-			public static String volumes = "containers::Service::properties::volumes";
-			
-			
-			public static String ports = "containers::Service::properties::ports";
-			
-			
-			public static String command = "containers::Service::properties::command";
-			
+	public static String image = "containers::Service::image";
 	
-		}
+	
+	public static String envs = "containers::Service::envs";
+	
+	
+	public static String volumes = "containers::Service::volumes";
+	
+	
+	public static String ports = "containers::Service::ports";
+	
+	
+	public static String command = "containers::Service::command";
 	
 	}
 

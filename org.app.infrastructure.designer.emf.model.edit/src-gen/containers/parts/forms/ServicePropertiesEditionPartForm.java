@@ -89,8 +89,6 @@ import org.eclipse.ui.forms.widgets.Section;
  */
 public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, ServicePropertiesEditionPart {
 
-	protected Text name;
-	protected EObjectFlatComboViewer link;
 	protected Text image;
 	protected ReferencesTable envs;
 	protected List<ViewerFilter> envsBusinessFilters = new ArrayList<ViewerFilter>();
@@ -146,42 +144,29 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence serviceStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = serviceStep.addStep(ContainersViewsRepository.Service.Properties.class);
-		propertiesStep.addStep(ContainersViewsRepository.Service.Properties.name);
-		propertiesStep.addStep(ContainersViewsRepository.Service.Properties.link);
-		propertiesStep.addStep(ContainersViewsRepository.Service.Properties.image);
-		propertiesStep.addStep(ContainersViewsRepository.Service.Properties.envs);
-		propertiesStep.addStep(ContainersViewsRepository.Service.Properties.volumes);
-		propertiesStep.addStep(ContainersViewsRepository.Service.Properties.ports);
-		propertiesStep.addStep(ContainersViewsRepository.Service.Properties.command);
-		
+		serviceStep.addStep(ContainersViewsRepository.Service.image);
+		serviceStep.addStep(ContainersViewsRepository.Service.envs);
+		serviceStep.addStep(ContainersViewsRepository.Service.volumes);
+		serviceStep.addStep(ContainersViewsRepository.Service.ports);
+		serviceStep.addStep(ContainersViewsRepository.Service.command);
 		
 		composer = new PartComposer(serviceStep) {
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
-				if (key == ContainersViewsRepository.Service.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == ContainersViewsRepository.Service.Properties.name) {
-					return createNameText(widgetFactory, parent);
-				}
-				if (key == ContainersViewsRepository.Service.Properties.link) {
-					return createLinkFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == ContainersViewsRepository.Service.Properties.image) {
+				if (key == ContainersViewsRepository.Service.image) {
 					return createImageText(widgetFactory, parent);
 				}
-				if (key == ContainersViewsRepository.Service.Properties.envs) {
+				if (key == ContainersViewsRepository.Service.envs) {
 					return createEnvsTableComposition(widgetFactory, parent);
 				}
-				if (key == ContainersViewsRepository.Service.Properties.volumes) {
+				if (key == ContainersViewsRepository.Service.volumes) {
 					return createVolumesReferencesTable(widgetFactory, parent);
 				}
-				if (key == ContainersViewsRepository.Service.Properties.ports) {
+				if (key == ContainersViewsRepository.Service.ports) {
 					return createPortsTableComposition(widgetFactory, parent);
 				}
-				if (key == ContainersViewsRepository.Service.Properties.command) {
+				if (key == ContainersViewsRepository.Service.command) {
 					return createCommandText(widgetFactory, parent);
 				}
 				return parent;
@@ -189,127 +174,9 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		};
 		composer.compose(view);
 	}
-	/**
-	 * 
-	 */
-	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(ContainersMessages.ServicePropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
-
-	
-	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, ContainersViewsRepository.Service.Properties.name, ContainersMessages.ServicePropertiesEditionPart_NameLabel);
-		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
-		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
-		name.setLayoutData(nameData);
-		name.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							ServicePropertiesEditionPartForm.this,
-							ContainersViewsRepository.Service.Properties.name,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									ServicePropertiesEditionPartForm.this,
-									ContainersViewsRepository.Service.Properties.name,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, name.getText()));
-				}
-			}
-
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									ServicePropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
-				}
-			}
-		});
-		name.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
-				}
-			}
-		});
-		EditingUtils.setID(name, ContainersViewsRepository.Service.Properties.name);
-		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ContainersViewsRepository.Service.Properties.name, ContainersViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createNameText
-
-		// End of user code
-		return parent;
-	}
-
-	/**
-	 * @param parent the parent composite
-	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
-	 */
-	protected Composite createLinkFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, ContainersViewsRepository.Service.Properties.link, ContainersMessages.ServicePropertiesEditionPart_LinkLabel);
-		link = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(ContainersViewsRepository.Service.Properties.link, ContainersViewsRepository.FORM_KIND));
-		widgetFactory.adapt(link);
-		link.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData linkData = new GridData(GridData.FILL_HORIZONTAL);
-		link.setLayoutData(linkData);
-		link.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.link, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getLink()));
-			}
-
-		});
-		link.setID(ContainersViewsRepository.Service.Properties.link);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ContainersViewsRepository.Service.Properties.link, ContainersViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createLinkFlatComboViewer
-
-		// End of user code
-		return parent;
-	}
-
 	
 	protected Composite createImageText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, ContainersViewsRepository.Service.Properties.image, ContainersMessages.ServicePropertiesEditionPart_ImageLabel);
+		createDescription(parent, ContainersViewsRepository.Service.image, ContainersMessages.ServicePropertiesEditionPart_ImageLabel);
 		image = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		image.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -326,12 +193,12 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 							ServicePropertiesEditionPartForm.this,
-							ContainersViewsRepository.Service.Properties.image,
+							ContainersViewsRepository.Service.image,
 							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, image.getText()));
 					propertiesEditionComponent
 							.firePropertiesChanged(new PropertiesEditionEvent(
 									ServicePropertiesEditionPartForm.this,
-									ContainersViewsRepository.Service.Properties.image,
+									ContainersViewsRepository.Service.image,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
 									null, image.getText()));
 				}
@@ -362,13 +229,13 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.image, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, image.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.image, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, image.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(image, ContainersViewsRepository.Service.Properties.image);
+		EditingUtils.setID(image, ContainersViewsRepository.Service.image);
 		EditingUtils.setEEFtype(image, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ContainersViewsRepository.Service.Properties.image, ContainersViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ContainersViewsRepository.Service.image, ContainersViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createImageText
 
 		// End of user code
@@ -380,21 +247,21 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 * 
 	 */
 	protected Composite createEnvsTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.envs = new ReferencesTable(getDescription(ContainersViewsRepository.Service.Properties.envs, ContainersMessages.ServicePropertiesEditionPart_EnvsLabel), new ReferencesTableListener() {
+		this.envs = new ReferencesTable(getDescription(ContainersViewsRepository.Service.envs, ContainersMessages.ServicePropertiesEditionPart_EnvsLabel), new ReferencesTableListener() {
 			public void handleAdd() {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.envs, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.envs, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				envs.refresh();
 			}
 			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.envs, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.envs, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
 				envs.refresh();
 			}
 			public void handleMove(EObject element, int oldIndex, int newIndex) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.envs, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.envs, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 				envs.refresh();
 			}
 			public void handleRemove(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.envs, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.envs, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				envs.refresh();
 			}
 			public void navigateTo(EObject element) { }
@@ -402,13 +269,13 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		for (ViewerFilter filter : this.envsFilters) {
 			this.envs.addFilter(filter);
 		}
-		this.envs.setHelpText(propertiesEditionComponent.getHelpContent(ContainersViewsRepository.Service.Properties.envs, ContainersViewsRepository.FORM_KIND));
+		this.envs.setHelpText(propertiesEditionComponent.getHelpContent(ContainersViewsRepository.Service.envs, ContainersViewsRepository.FORM_KIND));
 		this.envs.createControls(parent, widgetFactory);
 		this.envs.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.envs, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.envs, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -418,7 +285,7 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		this.envs.setLayoutData(envsData);
 		this.envs.setLowerBound(0);
 		this.envs.setUpperBound(-1);
-		envs.setID(ContainersViewsRepository.Service.Properties.envs);
+		envs.setID(ContainersViewsRepository.Service.envs);
 		envs.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createEnvsTableComposition
 
@@ -430,20 +297,20 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 * 
 	 */
 	protected Composite createVolumesReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.volumes = new ReferencesTable(getDescription(ContainersViewsRepository.Service.Properties.volumes, ContainersMessages.ServicePropertiesEditionPart_VolumesLabel), new ReferencesTableListener	() {
+		this.volumes = new ReferencesTable(getDescription(ContainersViewsRepository.Service.volumes, ContainersMessages.ServicePropertiesEditionPart_VolumesLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addVolumes(); }
 			public void handleEdit(EObject element) { editVolumes(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveVolumes(element, oldIndex, newIndex); }
 			public void handleRemove(EObject element) { removeFromVolumes(element); }
 			public void navigateTo(EObject element) { }
 		});
-		this.volumes.setHelpText(propertiesEditionComponent.getHelpContent(ContainersViewsRepository.Service.Properties.volumes, ContainersViewsRepository.FORM_KIND));
+		this.volumes.setHelpText(propertiesEditionComponent.getHelpContent(ContainersViewsRepository.Service.volumes, ContainersViewsRepository.FORM_KIND));
 		this.volumes.createControls(parent, widgetFactory);
 		this.volumes.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.volumes, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.volumes, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -452,7 +319,7 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		volumesData.horizontalSpan = 3;
 		this.volumes.setLayoutData(volumesData);
 		this.volumes.disableMove();
-		volumes.setID(ContainersViewsRepository.Service.Properties.volumes);
+		volumes.setID(ContainersViewsRepository.Service.volumes);
 		volumes.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
 		// Start of user code for createVolumesReferencesTable
 
@@ -470,7 +337,7 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 			public void process(IStructuredSelection selection) {
 				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
 					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.volumes,
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.volumes,
 						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
 				}
 				volumes.refresh();
@@ -483,7 +350,7 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 * 
 	 */
 	protected void moveVolumes(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.volumes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.volumes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 		volumes.refresh();
 	}
 
@@ -491,7 +358,7 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 * 
 	 */
 	protected void removeFromVolumes(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.volumes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.volumes, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 		volumes.refresh();
 	}
 
@@ -515,21 +382,21 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 * 
 	 */
 	protected Composite createPortsTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.ports = new ReferencesTable(getDescription(ContainersViewsRepository.Service.Properties.ports, ContainersMessages.ServicePropertiesEditionPart_PortsLabel), new ReferencesTableListener() {
+		this.ports = new ReferencesTable(getDescription(ContainersViewsRepository.Service.ports, ContainersMessages.ServicePropertiesEditionPart_PortsLabel), new ReferencesTableListener() {
 			public void handleAdd() {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.ports, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.ports, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
 				ports.refresh();
 			}
 			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.ports, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.ports, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
 				ports.refresh();
 			}
 			public void handleMove(EObject element, int oldIndex, int newIndex) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.ports, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.ports, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
 				ports.refresh();
 			}
 			public void handleRemove(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.ports, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.ports, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
 				ports.refresh();
 			}
 			public void navigateTo(EObject element) { }
@@ -537,13 +404,13 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		for (ViewerFilter filter : this.portsFilters) {
 			this.ports.addFilter(filter);
 		}
-		this.ports.setHelpText(propertiesEditionComponent.getHelpContent(ContainersViewsRepository.Service.Properties.ports, ContainersViewsRepository.FORM_KIND));
+		this.ports.setHelpText(propertiesEditionComponent.getHelpContent(ContainersViewsRepository.Service.ports, ContainersViewsRepository.FORM_KIND));
 		this.ports.createControls(parent, widgetFactory);
 		this.ports.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.ports, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.ports, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
@@ -553,7 +420,7 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		this.ports.setLayoutData(portsData);
 		this.ports.setLowerBound(0);
 		this.ports.setUpperBound(-1);
-		ports.setID(ContainersViewsRepository.Service.Properties.ports);
+		ports.setID(ContainersViewsRepository.Service.ports);
 		ports.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createPortsTableComposition
 
@@ -563,7 +430,7 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 
 	
 	protected Composite createCommandText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, ContainersViewsRepository.Service.Properties.command, ContainersMessages.ServicePropertiesEditionPart_CommandLabel);
+		createDescription(parent, ContainersViewsRepository.Service.command, ContainersMessages.ServicePropertiesEditionPart_CommandLabel);
 		command = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		command.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -580,12 +447,12 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 							ServicePropertiesEditionPartForm.this,
-							ContainersViewsRepository.Service.Properties.command,
+							ContainersViewsRepository.Service.command,
 							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, command.getText()));
 					propertiesEditionComponent
 							.firePropertiesChanged(new PropertiesEditionEvent(
 									ServicePropertiesEditionPartForm.this,
-									ContainersViewsRepository.Service.Properties.command,
+									ContainersViewsRepository.Service.command,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
 									null, command.getText()));
 				}
@@ -616,13 +483,13 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.Properties.command, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, command.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServicePropertiesEditionPartForm.this, ContainersViewsRepository.Service.command, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, command.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(command, ContainersViewsRepository.Service.Properties.command);
+		EditingUtils.setID(command, ContainersViewsRepository.Service.command);
 		EditingUtils.setEEFtype(command, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ContainersViewsRepository.Service.Properties.command, ContainersViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(ContainersViewsRepository.Service.command, ContainersViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createCommandText
 
 		// End of user code
@@ -640,124 +507,6 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		// Start of user code for tab synchronization
 		
 		// End of user code
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see containers.parts.ServicePropertiesEditionPart#getName()
-	 * 
-	 */
-	public String getName() {
-		return name.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see containers.parts.ServicePropertiesEditionPart#setName(String newValue)
-	 * 
-	 */
-	public void setName(String newValue) {
-		if (newValue != null) {
-			name.setText(newValue);
-		} else {
-			name.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(ContainersViewsRepository.Service.Properties.name);
-		if (eefElementEditorReadOnlyState && name.isEnabled()) {
-			name.setEnabled(false);
-			name.setToolTipText(ContainersMessages.Service_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
-			name.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see containers.parts.ServicePropertiesEditionPart#getLink()
-	 * 
-	 */
-	public EObject getLink() {
-		if (link.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) link.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see containers.parts.ServicePropertiesEditionPart#initLink(EObjectFlatComboSettings)
-	 */
-	public void initLink(EObjectFlatComboSettings settings) {
-		link.setInput(settings);
-		if (current != null) {
-			link.setSelection(new StructuredSelection(settings.getValue()));
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(ContainersViewsRepository.Service.Properties.link);
-		if (eefElementEditorReadOnlyState && link.isEnabled()) {
-			link.setEnabled(false);
-			link.setToolTipText(ContainersMessages.Service_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !link.isEnabled()) {
-			link.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see containers.parts.ServicePropertiesEditionPart#setLink(EObject newValue)
-	 * 
-	 */
-	public void setLink(EObject newValue) {
-		if (newValue != null) {
-			link.setSelection(new StructuredSelection(newValue));
-		} else {
-			link.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(ContainersViewsRepository.Service.Properties.link);
-		if (eefElementEditorReadOnlyState && link.isEnabled()) {
-			link.setEnabled(false);
-			link.setToolTipText(ContainersMessages.Service_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !link.isEnabled()) {
-			link.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see containers.parts.ServicePropertiesEditionPart#setLinkButtonMode(ButtonsModeEnum newValue)
-	 */
-	public void setLinkButtonMode(ButtonsModeEnum newValue) {
-		link.setButtonMode(newValue);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see containers.parts.ServicePropertiesEditionPart#addFilterLink(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToLink(ViewerFilter filter) {
-		link.addFilter(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see containers.parts.ServicePropertiesEditionPart#addBusinessFilterLink(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToLink(ViewerFilter filter) {
-		link.addBusinessRuleFilter(filter);
 	}
 
 	/**
@@ -782,7 +531,7 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		} else {
 			image.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(ContainersViewsRepository.Service.Properties.image);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ContainersViewsRepository.Service.image);
 		if (eefElementEditorReadOnlyState && image.isEnabled()) {
 			image.setEnabled(false);
 			image.setToolTipText(ContainersMessages.Service_ReadOnly);
@@ -805,7 +554,7 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		envs.setContentProvider(contentProvider);
 		envs.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(ContainersViewsRepository.Service.Properties.envs);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ContainersViewsRepository.Service.envs);
 		if (eefElementEditorReadOnlyState && envs.isEnabled()) {
 			envs.setEnabled(false);
 			envs.setToolTipText(ContainersMessages.Service_ReadOnly);
@@ -873,7 +622,7 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		volumes.setInput(settings);
 		volumesBusinessFilters.clear();
 		volumesFilters.clear();
-		boolean eefElementEditorReadOnlyState = isReadOnly(ContainersViewsRepository.Service.Properties.volumes);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ContainersViewsRepository.Service.volumes);
 		if (eefElementEditorReadOnlyState && volumes.getTable().isEnabled()) {
 			volumes.setEnabled(false);
 			volumes.setToolTipText(ContainersMessages.Service_ReadOnly);
@@ -936,7 +685,7 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		ports.setContentProvider(contentProvider);
 		ports.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(ContainersViewsRepository.Service.Properties.ports);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ContainersViewsRepository.Service.ports);
 		if (eefElementEditorReadOnlyState && ports.isEnabled()) {
 			ports.setEnabled(false);
 			ports.setToolTipText(ContainersMessages.Service_ReadOnly);
@@ -1011,7 +760,7 @@ public class ServicePropertiesEditionPartForm extends SectionPropertiesEditingPa
 		} else {
 			command.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(ContainersViewsRepository.Service.Properties.command);
+		boolean eefElementEditorReadOnlyState = isReadOnly(ContainersViewsRepository.Service.command);
 		if (eefElementEditorReadOnlyState && command.isEnabled()) {
 			command.setEnabled(false);
 			command.setToolTipText(ContainersMessages.Service_ReadOnly);

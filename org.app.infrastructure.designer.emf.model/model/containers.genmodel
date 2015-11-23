@@ -12,6 +12,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference containers.ecore#//Service/envs"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference containers.ecore#//Service/volumes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference containers.ecore#//Service/ports"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//Service/command"/>
     </genClasses>
     <genClasses ecoreClass="containers.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//NamedElement/name"/>

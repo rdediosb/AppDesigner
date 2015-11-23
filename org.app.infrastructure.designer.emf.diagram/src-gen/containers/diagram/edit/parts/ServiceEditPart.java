@@ -1,12 +1,16 @@
 package containers.diagram.edit.parts;
 
+import org.app.infrastructure.designer.emf.diagram.dialogs.ServicePropertiesDialog;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
@@ -19,8 +23,15 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.runtime.notation.impl.ShapeImpl;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.PlatformUI;
 
+import containers.Service;
 import containers.diagram.edit.policies.ServiceItemSemanticEditPolicy;
 import containers.diagram.part.ContainersVisualIDRegistry;
 
@@ -62,6 +73,40 @@ public class ServiceEditPart extends ShapeNodeEditPart {
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
+	/**
+	* @generated NOT
+	*/
+    public void performRequest(Request request) {
+
+            if (RequestConstants.REQ_OPEN.equals(request.getType())) {
+            	
+            	IWorkbench workbench = PlatformUI.getWorkbench();
+            	Shell shell = workbench.getActiveWorkbenchWindow().getShell();
+            	
+//            	MessageBox dialog = new MessageBox(shell, SWT.ICON_QUESTION | SWT.OK| SWT.CANCEL);
+//            			dialog.setText("My info");
+//            			dialog.setMessage("Do you really want to do this?");
+//
+//            			// open dialog and await user selection
+//            			Object returnCode = dialog.open(); 
+//            			
+//            			System.out.println(returnCode);
+            	
+            	Service service = (Service) ((org.eclipse.gmf.runtime.notation.Shape)this.getModel()).getElement();   	
+            	
+            	ServicePropertiesDialog dialog = new ServicePropertiesDialog(shell, service);
+            	
+            	Object returnCode = dialog.open(); 
+    			
+    			System.out.println(returnCode);
+            	
+            }
+            else{
+            	super.performRequest(request);
+            }
+ 
+    }
+    
 	/**
 	* @generated
 	*/

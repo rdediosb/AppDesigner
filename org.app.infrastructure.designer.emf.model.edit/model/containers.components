@@ -3,12 +3,6 @@
   <eef-components:PropertiesEditionContext xmi:id="_ty0c0JEBEeWR3e5smNSXXg" documentation="Edition Context for containers GenPackage">
     <categories xmi:id="_ty1D4JEBEeWR3e5smNSXXg" name="containers">
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_ty1D4ZEBEeWR3e5smNSXXg" name="Service" views="_ty1q8ZEBEeWR3e5smNSXXg">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ty1D4pEBEeWR3e5smNSXXg" name="name" views="_ty1q85EBEeWR3e5smNSXXg">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/org.app.infrastructure.designer.emf.model/model/containers.ecore#//NamedElement/name"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ty1D45EBEeWR3e5smNSXXg" name="link" views="_ty1q9JEBEeWR3e5smNSXXg">
-          <model xsi:type="ecore:EReference" href="platform:/resource/org.app.infrastructure.designer.emf.model/model/containers.ecore#//Service/link"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ty1D5JEBEeWR3e5smNSXXg" name="image" views="_ty1q9ZEBEeWR3e5smNSXXg">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/org.app.infrastructure.designer.emf.model/model/containers.ecore#//Service/image"/>
         </properties>
@@ -70,29 +64,20 @@
     <RepositoryKind>Form</RepositoryKind>
     <categories xmi:id="_ty1q8JEBEeWR3e5smNSXXg" name="containers">
       <views xmi:id="_ty1q8ZEBEeWR3e5smNSXXg" name="Service">
-        <elements xsi:type="eef-views:Container" xmi:id="_ty1q8pEBEeWR3e5smNSXXg" name="properties">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_ty1q85EBEeWR3e5smNSXXg" name="name">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_ty1q9JEBEeWR3e5smNSXXg" name="link">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_ty1q9ZEBEeWR3e5smNSXXg" name="image">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_ty1q9pEBEeWR3e5smNSXXg" name="envs">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_ty1q95EBEeWR3e5smNSXXg" name="volumes">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_ty1q-JEBEeWR3e5smNSXXg" name="ports">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_ty1q-ZEBEeWR3e5smNSXXg" name="command">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_ty1q9ZEBEeWR3e5smNSXXg" name="image">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_ty1q9pEBEeWR3e5smNSXXg" name="envs">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_ty1q95EBEeWR3e5smNSXXg" name="volumes">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_ty1q-JEBEeWR3e5smNSXXg" name="ports">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_ty1q-ZEBEeWR3e5smNSXXg" name="command">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
         </elements>
       </views>
       <views xmi:id="_ty1q-pEBEeWR3e5smNSXXg" name="NamedElement">
