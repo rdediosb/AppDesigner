@@ -1,5 +1,14 @@
 package org.app.infrastructure.designer.emf.diagram.dialogs;
 
+import java.net.URI;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.Configuration;
+
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
@@ -10,6 +19,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
+import org.glassfish.jersey.client.ClientConfig;
 
 import containers.Service;
 
@@ -35,7 +45,17 @@ public class ServicePropertiesDialog extends Dialog{
 		button.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Pressed");
+				
+				ClientConfig config = new ClientConfig();
+			    Client client = ClientBuilder.newClient(config);
+			    
+			    URI uri = UriBuilder.fromUri("https://registry.hub.docker.com").build();
+			    
+			    WebTarget target = client.target(uri);
+			    
+			    String plainAnswer = target.path("v1").request().accept(MediaType.TEXT_PLAIN).get(String.class);
+			    
+				System.out.println(plainAnswer);
 			}
 		});
 		

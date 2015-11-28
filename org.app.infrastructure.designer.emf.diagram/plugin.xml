@@ -160,7 +160,7 @@
       </propertyContributor>
    </extension>
 
-   <!--<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
       <?gmfgen generated="true"?>   
       <propertyTabs contributorId="org.app.infrastructure.designer.emf.diagram">
          <propertyTab
@@ -176,7 +176,7 @@
              id="property.tab.domain"
              label="%tab.domain"/>
       </propertyTabs>
-   </extension>-->
+   </extension>
 
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
       <?gmfgen generated="true"?>   
@@ -489,24 +489,6 @@
    <extension point="org.eclipse.ui.handlers" id="menu-handlers">
       <?gmfgen generated="true"?>
    </extension>
-<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
-      <?gmfgen generated="true"?>   
-      <propertyTabs contributorId="org.app.infrastructure.designer.emf.diagram">
-         <propertyTab
-             category="visual"
-             id="property.tab.AppearancePropertySection"
-             label="%tab.appearance"/>
-          <propertyTab
-             category="visual"
-             id="property.tab.DiagramPropertySection"
-             label="%tab.diagram"/>
-          <propertyTab
-             category="domain"
-             id="property.tab.domain"
-             label="%tab.domain"/>
-      </propertyTabs>
-   </extension>
-
 
    <!-- optionally, specify keybindings -->
 </plugin>
