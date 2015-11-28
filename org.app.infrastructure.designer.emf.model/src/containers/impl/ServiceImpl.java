@@ -3,23 +3,15 @@
 package containers.impl;
 
 import containers.ContainersPackage;
-import containers.Env;
-import containers.PortMapping;
+import containers.Image;
 import containers.Service;
 
-import containers.Volume;
-import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,10 +23,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link containers.impl.ServiceImpl#getLink <em>Link</em>}</li>
  *   <li>{@link containers.impl.ServiceImpl#getImage <em>Image</em>}</li>
- *   <li>{@link containers.impl.ServiceImpl#getEnvs <em>Envs</em>}</li>
- *   <li>{@link containers.impl.ServiceImpl#getVolumes <em>Volumes</em>}</li>
- *   <li>{@link containers.impl.ServiceImpl#getPorts <em>Ports</em>}</li>
- *   <li>{@link containers.impl.ServiceImpl#getCommand <em>Command</em>}</li>
+ *   <li>{@link containers.impl.ServiceImpl#getHost_port <em>Host port</em>}</li>
+ *   <li>{@link containers.impl.ServiceImpl#getContainer_port <em>Container port</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,72 +41,54 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 	protected Service link;
 
 	/**
-	 * The default value of the '{@link #getImage() <em>Image</em>}' attribute.
+	 * The cached value of the '{@link #getImage() <em>Image</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getImage()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String IMAGE_EDEFAULT = null;
-	/**
-	 * The cached value of the '{@link #getImage() <em>Image</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImage()
-	 * @generated
-	 * @ordered
-	 */
-	protected String image = IMAGE_EDEFAULT;
-	/**
-	 * The cached value of the '{@link #getEnvs() <em>Envs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnvs()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Env> envs;
+	protected Image image;
 
 	/**
-	 * The cached value of the '{@link #getVolumes() <em>Volumes</em>}' reference list.
+	 * The default value of the '{@link #getHost_port() <em>Host port</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVolumes()
+	 * @see #getHost_port()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Volume> volumes;
+	protected static final int HOST_PORT_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getPorts() <em>Ports</em>}' containment reference list.
+	 * The cached value of the '{@link #getHost_port() <em>Host port</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPorts()
+	 * @see #getHost_port()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PortMapping> ports;
+	protected int host_port = HOST_PORT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getCommand() <em>Command</em>}' attribute.
+	 * The default value of the '{@link #getContainer_port() <em>Container port</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCommand()
+	 * @see #getContainer_port()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String COMMAND_EDEFAULT = null;
+	protected static final int CONTAINER_PORT_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getCommand() <em>Command</em>}' attribute.
+	 * The cached value of the '{@link #getContainer_port() <em>Container port</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCommand()
+	 * @see #getContainer_port()
 	 * @generated
 	 * @ordered
 	 */
-	protected String command = COMMAND_EDEFAULT;
+	protected int container_port = CONTAINER_PORT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -180,7 +152,15 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getImage() {
+	public Image getImage() {
+		if (image != null && image.eIsProxy()) {
+			InternalEObject oldImage = (InternalEObject)image;
+			image = (Image)eResolveProxy(oldImage);
+			if (image != oldImage) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContainersPackage.SERVICE__IMAGE, oldImage, image));
+			}
+		}
 		return image;
 	}
 
@@ -189,8 +169,17 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setImage(String newImage) {
-		String oldImage = image;
+	public Image basicGetImage() {
+		return image;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setImage(Image newImage) {
+		Image oldImage = image;
 		image = newImage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ContainersPackage.SERVICE__IMAGE, oldImage, image));
@@ -201,11 +190,8 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Env> getEnvs() {
-		if (envs == null) {
-			envs = new EObjectContainmentEList<Env>(Env.class, this, ContainersPackage.SERVICE__ENVS);
-		}
-		return envs;
+	public int getHost_port() {
+		return host_port;
 	}
 
 	/**
@@ -213,44 +199,11 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Volume> getVolumes() {
-		if (volumes == null) {
-			volumes = new EObjectResolvingEList<Volume>(Volume.class, this, ContainersPackage.SERVICE__VOLUMES);
-		}
-		return volumes;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<PortMapping> getPorts() {
-		if (ports == null) {
-			ports = new EObjectContainmentEList<PortMapping>(PortMapping.class, this, ContainersPackage.SERVICE__PORTS);
-		}
-		return ports;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getCommand() {
-		return command;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCommand(String newCommand) {
-		String oldCommand = command;
-		command = newCommand;
+	public void setHost_port(int newHost_port) {
+		int oldHost_port = host_port;
+		host_port = newHost_port;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ContainersPackage.SERVICE__COMMAND, oldCommand, command));
+			eNotify(new ENotificationImpl(this, Notification.SET, ContainersPackage.SERVICE__HOST_PORT, oldHost_port, host_port));
 	}
 
 	/**
@@ -258,15 +211,20 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ContainersPackage.SERVICE__ENVS:
-				return ((InternalEList<?>)getEnvs()).basicRemove(otherEnd, msgs);
-			case ContainersPackage.SERVICE__PORTS:
-				return ((InternalEList<?>)getPorts()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public int getContainer_port() {
+		return container_port;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setContainer_port(int newContainer_port) {
+		int oldContainer_port = container_port;
+		container_port = newContainer_port;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ContainersPackage.SERVICE__CONTAINER_PORT, oldContainer_port, container_port));
 	}
 
 	/**
@@ -281,15 +239,12 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 				if (resolve) return getLink();
 				return basicGetLink();
 			case ContainersPackage.SERVICE__IMAGE:
-				return getImage();
-			case ContainersPackage.SERVICE__ENVS:
-				return getEnvs();
-			case ContainersPackage.SERVICE__VOLUMES:
-				return getVolumes();
-			case ContainersPackage.SERVICE__PORTS:
-				return getPorts();
-			case ContainersPackage.SERVICE__COMMAND:
-				return getCommand();
+				if (resolve) return getImage();
+				return basicGetImage();
+			case ContainersPackage.SERVICE__HOST_PORT:
+				return getHost_port();
+			case ContainersPackage.SERVICE__CONTAINER_PORT:
+				return getContainer_port();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -299,7 +254,6 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -307,22 +261,13 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 				setLink((Service)newValue);
 				return;
 			case ContainersPackage.SERVICE__IMAGE:
-				setImage((String)newValue);
+				setImage((Image)newValue);
 				return;
-			case ContainersPackage.SERVICE__ENVS:
-				getEnvs().clear();
-				getEnvs().addAll((Collection<? extends Env>)newValue);
+			case ContainersPackage.SERVICE__HOST_PORT:
+				setHost_port((Integer)newValue);
 				return;
-			case ContainersPackage.SERVICE__VOLUMES:
-				getVolumes().clear();
-				getVolumes().addAll((Collection<? extends Volume>)newValue);
-				return;
-			case ContainersPackage.SERVICE__PORTS:
-				getPorts().clear();
-				getPorts().addAll((Collection<? extends PortMapping>)newValue);
-				return;
-			case ContainersPackage.SERVICE__COMMAND:
-				setCommand((String)newValue);
+			case ContainersPackage.SERVICE__CONTAINER_PORT:
+				setContainer_port((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -340,19 +285,13 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 				setLink((Service)null);
 				return;
 			case ContainersPackage.SERVICE__IMAGE:
-				setImage(IMAGE_EDEFAULT);
+				setImage((Image)null);
 				return;
-			case ContainersPackage.SERVICE__ENVS:
-				getEnvs().clear();
+			case ContainersPackage.SERVICE__HOST_PORT:
+				setHost_port(HOST_PORT_EDEFAULT);
 				return;
-			case ContainersPackage.SERVICE__VOLUMES:
-				getVolumes().clear();
-				return;
-			case ContainersPackage.SERVICE__PORTS:
-				getPorts().clear();
-				return;
-			case ContainersPackage.SERVICE__COMMAND:
-				setCommand(COMMAND_EDEFAULT);
+			case ContainersPackage.SERVICE__CONTAINER_PORT:
+				setContainer_port(CONTAINER_PORT_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -369,15 +308,11 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 			case ContainersPackage.SERVICE__LINK:
 				return link != null;
 			case ContainersPackage.SERVICE__IMAGE:
-				return IMAGE_EDEFAULT == null ? image != null : !IMAGE_EDEFAULT.equals(image);
-			case ContainersPackage.SERVICE__ENVS:
-				return envs != null && !envs.isEmpty();
-			case ContainersPackage.SERVICE__VOLUMES:
-				return volumes != null && !volumes.isEmpty();
-			case ContainersPackage.SERVICE__PORTS:
-				return ports != null && !ports.isEmpty();
-			case ContainersPackage.SERVICE__COMMAND:
-				return COMMAND_EDEFAULT == null ? command != null : !COMMAND_EDEFAULT.equals(command);
+				return image != null;
+			case ContainersPackage.SERVICE__HOST_PORT:
+				return host_port != HOST_PORT_EDEFAULT;
+			case ContainersPackage.SERVICE__CONTAINER_PORT:
+				return container_port != CONTAINER_PORT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -392,10 +327,10 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (image: ");
-		result.append(image);
-		result.append(", command: ");
-		result.append(command);
+		result.append(" (host_port: ");
+		result.append(host_port);
+		result.append(", container_port: ");
+		result.append(container_port);
 		result.append(')');
 		return result.toString();
 	}

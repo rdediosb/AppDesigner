@@ -5,12 +5,10 @@ package containers.impl;
 import containers.Compose;
 import containers.ContainersFactory;
 import containers.ContainersPackage;
-import containers.Env;
+import containers.Image;
 import containers.NamedElement;
-import containers.PortMapping;
 import containers.Service;
 
-import containers.Volume;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -51,21 +49,7 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass envEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass volumeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass portMappingEClass = null;
+	private EClass imageEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -151,8 +135,8 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getService_Image() {
-		return (EAttribute)serviceEClass.getEStructuralFeatures().get(1);
+	public EReference getService_Image() {
+		return (EReference)serviceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -160,8 +144,8 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getService_Envs() {
-		return (EReference)serviceEClass.getEStructuralFeatures().get(2);
+	public EAttribute getService_Host_port() {
+		return (EAttribute)serviceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -169,26 +153,8 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getService_Volumes() {
-		return (EReference)serviceEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getService_Ports() {
-		return (EReference)serviceEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getService_Command() {
-		return (EAttribute)serviceEClass.getEStructuralFeatures().get(5);
+	public EAttribute getService_Container_port() {
+		return (EAttribute)serviceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -214,6 +180,15 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getNamedElement_Id() {
+		return (EAttribute)namedElementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCompose() {
 		return composeEClass;
 	}
@@ -232,8 +207,8 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getEnv() {
-		return envEClass;
+	public EReference getCompose_Images() {
+		return (EReference)composeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -241,8 +216,8 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEnv_Key() {
-		return (EAttribute)envEClass.getEStructuralFeatures().get(0);
+	public EClass getImage() {
+		return imageEClass;
 	}
 
 	/**
@@ -250,44 +225,8 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEnv_Value() {
-		return (EAttribute)envEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getVolume() {
-		return volumeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getPortMapping() {
-		return portMappingEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPortMapping_External() {
-		return (EAttribute)portMappingEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPortMapping_Internal() {
-		return (EAttribute)portMappingEClass.getEStructuralFeatures().get(1);
+	public EAttribute getImage_ImageID() {
+		return (EAttribute)imageEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -320,27 +259,20 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 		// Create classes and their features
 		serviceEClass = createEClass(SERVICE);
 		createEReference(serviceEClass, SERVICE__LINK);
-		createEAttribute(serviceEClass, SERVICE__IMAGE);
-		createEReference(serviceEClass, SERVICE__ENVS);
-		createEReference(serviceEClass, SERVICE__VOLUMES);
-		createEReference(serviceEClass, SERVICE__PORTS);
-		createEAttribute(serviceEClass, SERVICE__COMMAND);
+		createEReference(serviceEClass, SERVICE__IMAGE);
+		createEAttribute(serviceEClass, SERVICE__HOST_PORT);
+		createEAttribute(serviceEClass, SERVICE__CONTAINER_PORT);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
+		createEAttribute(namedElementEClass, NAMED_ELEMENT__ID);
 
 		composeEClass = createEClass(COMPOSE);
 		createEReference(composeEClass, COMPOSE__SERVICES);
+		createEReference(composeEClass, COMPOSE__IMAGES);
 
-		envEClass = createEClass(ENV);
-		createEAttribute(envEClass, ENV__KEY);
-		createEAttribute(envEClass, ENV__VALUE);
-
-		volumeEClass = createEClass(VOLUME);
-
-		portMappingEClass = createEClass(PORT_MAPPING);
-		createEAttribute(portMappingEClass, PORT_MAPPING__EXTERNAL);
-		createEAttribute(portMappingEClass, PORT_MAPPING__INTERNAL);
+		imageEClass = createEClass(IMAGE);
+		createEAttribute(imageEClass, IMAGE__IMAGE_ID);
 	}
 
 	/**
@@ -372,32 +304,25 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 
 		// Add supertypes to classes
 		serviceEClass.getESuperTypes().add(this.getNamedElement());
-		volumeEClass.getESuperTypes().add(this.getNamedElement());
+		imageEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(serviceEClass, Service.class, "Service", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getService_Link(), this.getService(), null, "link", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getService_Image(), ecorePackage.getEString(), "image", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getService_Envs(), this.getEnv(), null, "envs", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getService_Volumes(), this.getVolume(), null, "volumes", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getService_Ports(), this.getPortMapping(), null, "ports", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getService_Command(), ecorePackage.getEString(), "command", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getService_Image(), this.getImage(), null, "image", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getService_Host_port(), ecorePackage.getEInt(), "host_port", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getService_Container_port(), ecorePackage.getEInt(), "container_port", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNamedElement_Id(), ecorePackage.getEString(), "id", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(composeEClass, Compose.class, "Compose", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCompose_Services(), this.getService(), null, "services", null, 0, -1, Compose.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompose_Images(), this.getImage(), null, "images", null, 0, -1, Compose.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(envEClass, Env.class, "Env", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEnv_Key(), ecorePackage.getEString(), "key", null, 0, 1, Env.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEnv_Value(), ecorePackage.getEString(), "value", null, 0, 1, Env.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(volumeEClass, Volume.class, "Volume", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(portMappingEClass, PortMapping.class, "PortMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPortMapping_External(), ecorePackage.getEInt(), "external", null, 0, 1, PortMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPortMapping_Internal(), ecorePackage.getEInt(), "internal", null, 0, 1, PortMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(imageEClass, Image.class, "Image", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getImage_ImageID(), ecorePackage.getEString(), "imageID", null, 0, 1, Image.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

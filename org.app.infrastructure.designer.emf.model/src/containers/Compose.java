@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link containers.Compose#getServices <em>Services</em>}</li>
+ *   <li>{@link containers.Compose#getImages <em>Images</em>}</li>
  * </ul>
  *
  * @see containers.ContainersPackage#getCompose()
@@ -38,5 +39,21 @@ public interface Compose extends EObject {
 	 * @generated
 	 */
 	EList<Service> getServices();
+
+	/**
+	 * Returns the value of the '<em><b>Images</b></em>' containment reference list.
+	 * The list contents are of type {@link containers.Image}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Images</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Images</em>' containment reference list.
+	 * @see containers.ContainersPackage#getCompose_Images()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Image> getImages();
 
 } // Compose

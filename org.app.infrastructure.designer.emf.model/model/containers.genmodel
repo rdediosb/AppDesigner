@@ -7,27 +7,23 @@
   <foreignModel>containers.ecore</foreignModel>
   <genPackages prefix="Containers" disposableProviderFactory="true" ecorePackage="containers.ecore#/">
     <genClasses ecoreClass="containers.ecore#//Service">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference containers.ecore#//Service/link"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//Service/image"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference containers.ecore#//Service/envs"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference containers.ecore#//Service/volumes"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference containers.ecore#//Service/ports"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//Service/command"/>
+      <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference containers.ecore#//Service/link"/>
+      <genFeatures createChild="false" propertyCategory="" propertyDescription=""
+          ecoreFeature="ecore:EReference containers.ecore#//Service/image"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//Service/host_port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//Service/container_port"/>
     </genClasses>
     <genClasses ecoreClass="containers.ecore#//NamedElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//NamedElement/name"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//NamedElement/name"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//NamedElement/id"/>
     </genClasses>
     <genClasses ecoreClass="containers.ecore#//Compose">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference containers.ecore#//Compose/services"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference containers.ecore#//Compose/images"/>
     </genClasses>
-    <genClasses ecoreClass="containers.ecore#//Env">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//Env/key"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//Env/value"/>
-    </genClasses>
-    <genClasses ecoreClass="containers.ecore#//Volume"/>
-    <genClasses ecoreClass="containers.ecore#//PortMapping">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//PortMapping/external"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//PortMapping/internal"/>
+    <genClasses ecoreClass="containers.ecore#//Image">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//Image/imageID"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

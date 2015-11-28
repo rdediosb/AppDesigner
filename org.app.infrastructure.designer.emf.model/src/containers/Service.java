@@ -2,8 +2,6 @@
  */
 package containers;
 
-import org.eclipse.emf.common.util.EList;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -16,10 +14,8 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link containers.Service#getLink <em>Link</em>}</li>
  *   <li>{@link containers.Service#getImage <em>Image</em>}</li>
- *   <li>{@link containers.Service#getEnvs <em>Envs</em>}</li>
- *   <li>{@link containers.Service#getVolumes <em>Volumes</em>}</li>
- *   <li>{@link containers.Service#getPorts <em>Ports</em>}</li>
- *   <li>{@link containers.Service#getCommand <em>Command</em>}</li>
+ *   <li>{@link containers.Service#getHost_port <em>Host port</em>}</li>
+ *   <li>{@link containers.Service#getContainer_port <em>Container port</em>}</li>
  * </ul>
  *
  * @see containers.ContainersPackage#getService()
@@ -54,103 +50,81 @@ public interface Service extends NamedElement {
 	void setLink(Service value);
 
 	/**
-	 * Returns the value of the '<em><b>Image</b></em>' attribute.
+	 * Returns the value of the '<em><b>Image</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Image</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Image</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Image</em>' attribute.
-	 * @see #setImage(String)
+	 * @return the value of the '<em>Image</em>' reference.
+	 * @see #setImage(Image)
 	 * @see containers.ContainersPackage#getService_Image()
 	 * @model
 	 * @generated
 	 */
-	String getImage();
+	Image getImage();
 
 	/**
-	 * Sets the value of the '{@link containers.Service#getImage <em>Image</em>}' attribute.
+	 * Sets the value of the '{@link containers.Service#getImage <em>Image</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Image</em>' attribute.
+	 * @param value the new value of the '<em>Image</em>' reference.
 	 * @see #getImage()
 	 * @generated
 	 */
-	void setImage(String value);
+	void setImage(Image value);
 
 	/**
-	 * Returns the value of the '<em><b>Envs</b></em>' containment reference list.
-	 * The list contents are of type {@link containers.Env}.
+	 * Returns the value of the '<em><b>Host port</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Envs</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Host port</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Envs</em>' containment reference list.
-	 * @see containers.ContainersPackage#getService_Envs()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Env> getEnvs();
-
-	/**
-	 * Returns the value of the '<em><b>Volumes</b></em>' reference list.
-	 * The list contents are of type {@link containers.Volume}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Volumes</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Volumes</em>' reference list.
-	 * @see containers.ContainersPackage#getService_Volumes()
+	 * @return the value of the '<em>Host port</em>' attribute.
+	 * @see #setHost_port(int)
+	 * @see containers.ContainersPackage#getService_Host_port()
 	 * @model
 	 * @generated
 	 */
-	EList<Volume> getVolumes();
+	int getHost_port();
 
 	/**
-	 * Returns the value of the '<em><b>Ports</b></em>' containment reference list.
-	 * The list contents are of type {@link containers.PortMapping}.
+	 * Sets the value of the '{@link containers.Service#getHost_port <em>Host port</em>}' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Ports</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ports</em>' containment reference list.
-	 * @see containers.ContainersPackage#getService_Ports()
-	 * @model containment="true"
+	 * @param value the new value of the '<em>Host port</em>' attribute.
+	 * @see #getHost_port()
 	 * @generated
 	 */
-	EList<PortMapping> getPorts();
+	void setHost_port(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Command</b></em>' attribute.
+	 * Returns the value of the '<em><b>Container port</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Command</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Container port</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Command</em>' attribute.
-	 * @see #setCommand(String)
-	 * @see containers.ContainersPackage#getService_Command()
+	 * @return the value of the '<em>Container port</em>' attribute.
+	 * @see #setContainer_port(int)
+	 * @see containers.ContainersPackage#getService_Container_port()
 	 * @model
 	 * @generated
 	 */
-	String getCommand();
+	int getContainer_port();
 
 	/**
-	 * Sets the value of the '{@link containers.Service#getCommand <em>Command</em>}' attribute.
+	 * Sets the value of the '{@link containers.Service#getContainer_port <em>Container port</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Command</em>' attribute.
-	 * @see #getCommand()
+	 * @param value the new value of the '<em>Container port</em>' attribute.
+	 * @see #getContainer_port()
 	 * @generated
 	 */
-	void setCommand(String value);
+	void setContainer_port(int value);
 
 } // Service

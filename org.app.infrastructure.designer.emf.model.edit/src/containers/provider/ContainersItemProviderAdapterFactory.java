@@ -141,72 +141,26 @@ public class ContainersItemProviderAdapterFactory extends ContainersAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link containers.Env} instances.
+	 * This keeps track of the one adapter used for all {@link containers.Image} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EnvItemProvider envItemProvider;
+	protected ImageItemProvider imageItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link containers.Env}.
+	 * This creates an adapter for a {@link containers.Image}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createEnvAdapter() {
-		if (envItemProvider == null) {
-			envItemProvider = new EnvItemProvider(this);
+	public Adapter createImageAdapter() {
+		if (imageItemProvider == null) {
+			imageItemProvider = new ImageItemProvider(this);
 		}
 
-		return envItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link containers.Volume} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected VolumeItemProvider volumeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link containers.Volume}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createVolumeAdapter() {
-		if (volumeItemProvider == null) {
-			volumeItemProvider = new VolumeItemProvider(this);
-		}
-
-		return volumeItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link containers.PortMapping} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PortMappingItemProvider portMappingItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link containers.PortMapping}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPortMappingAdapter() {
-		if (portMappingItemProvider == null) {
-			portMappingItemProvider = new PortMappingItemProvider(this);
-		}
-
-		return portMappingItemProvider;
+		return imageItemProvider;
 	}
 
 	/**
@@ -311,9 +265,7 @@ public class ContainersItemProviderAdapterFactory extends ContainersAdapterFacto
 		if (serviceItemProvider != null) serviceItemProvider.dispose();
 		if (namedElementItemProvider != null) namedElementItemProvider.dispose();
 		if (composeItemProvider != null) composeItemProvider.dispose();
-		if (envItemProvider != null) envItemProvider.dispose();
-		if (volumeItemProvider != null) volumeItemProvider.dispose();
-		if (portMappingItemProvider != null) portMappingItemProvider.dispose();
+		if (imageItemProvider != null) imageItemProvider.dispose();
 	}
 
 }

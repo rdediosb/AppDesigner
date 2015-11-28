@@ -85,22 +85,10 @@ public class ContainersSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ContainersPackage.ENV: {
-				Env env = (Env)theEObject;
-				T result = caseEnv(env);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ContainersPackage.VOLUME: {
-				Volume volume = (Volume)theEObject;
-				T result = caseVolume(volume);
-				if (result == null) result = caseNamedElement(volume);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ContainersPackage.PORT_MAPPING: {
-				PortMapping portMapping = (PortMapping)theEObject;
-				T result = casePortMapping(portMapping);
+			case ContainersPackage.IMAGE: {
+				Image image = (Image)theEObject;
+				T result = caseImage(image);
+				if (result == null) result = caseNamedElement(image);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -154,47 +142,17 @@ public class ContainersSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Env</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Image</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Env</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Image</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEnv(Env object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Volume</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Volume</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVolume(Volume object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Port Mapping</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Port Mapping</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePortMapping(PortMapping object) {
+	public T caseImage(Image object) {
 		return null;
 	}
 
