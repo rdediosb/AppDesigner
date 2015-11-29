@@ -1,13 +1,12 @@
 package org.app.infrastructure.designer.emf.diagram.dialogs;
 
 import java.net.URI;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.UriBuilder;
-import javax.ws.rs.core.Configuration;
 
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -37,6 +36,9 @@ public class ServicePropertiesDialog extends Dialog{
 		
 		Composite container = (Composite) super.createDialogArea(parent);
 		
+//		ClientConfig config = new ClientConfig();
+	    Client client = ClientBuilder.newClient();
+	    
 		Button button = new Button(container, SWT.PUSH);
 		
 		button.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,
@@ -46,16 +48,86 @@ public class ServicePropertiesDialog extends Dialog{
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				
-				ClientConfig config = new ClientConfig();
-			    Client client = ClientBuilder.newClient(config);
-			    
-			    URI uri = UriBuilder.fromUri("https://registry.hub.docker.com").build();
-			    
-			    WebTarget target = client.target(uri);
-			    
-			    String plainAnswer = target.path("v1").request().accept(MediaType.TEXT_PLAIN).get(String.class);
-			    
-				System.out.println(plainAnswer);
+//				ClientConfig config = new ClientConfig();
+//			    Client client = null;
+//			    Configuration po = new Configuration(){
+//
+//					@Override
+//					public Set<Class<?>> getClasses() {
+//						// TODO Auto-generated method stub
+//						return null;
+//					}
+//
+//					@Override
+//					public Map<Class<?>, Integer> getContracts(Class<?> arg0) {
+//						// TODO Auto-generated method stub
+//						return null;
+//					}
+//
+//					@Override
+//					public Set<Object> getInstances() {
+//						// TODO Auto-generated method stub
+//						return null;
+//					}
+//
+//					@Override
+//					public Map<String, Object> getProperties() {
+//						// TODO Auto-generated method stub
+//						return null;
+//					}
+//
+//					@Override
+//					public Object getProperty(String arg0) {
+//						// TODO Auto-generated method stub
+//						return null;
+//					}
+//
+//					@Override
+//					public Collection<String> getPropertyNames() {
+//						// TODO Auto-generated method stub
+//						return null;
+//					}
+//
+//					@Override
+//					public RuntimeType getRuntimeType() {
+//						// TODO Auto-generated method stub
+//						return null;
+//					}
+//
+//					@Override
+//					public boolean isEnabled(Feature arg0) {
+//						// TODO Auto-generated method stub
+//						return false;
+//					}
+//
+//					@Override
+//					public boolean isEnabled(Class<? extends Feature> arg0) {
+//						// TODO Auto-generated method stub
+//						return false;
+//					}
+//
+//					@Override
+//					public boolean isRegistered(Object arg0) {
+//						// TODO Auto-generated method stub
+//						return false;
+//					}
+//
+//					@Override
+//					public boolean isRegistered(Class<?> arg0) {
+//						// TODO Auto-generated method stub
+//						return false;
+//					}
+//			    	
+//			    };
+//			    client = ClientBuilder.newClient(config);
+//			    
+//			    URI uri = UriBuilder.fromUri("https://registry.hub.docker.com").build();
+//			    
+//			    WebTarget target = client.target(uri);
+//			    
+//			    String plainAnswer = target.path("v1").request().accept(MediaType.TEXT_PLAIN).get(String.class);
+//			    
+				System.out.println("");
 			}
 		});
 		

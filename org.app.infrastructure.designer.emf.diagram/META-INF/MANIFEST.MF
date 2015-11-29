@@ -3,7 +3,12 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.app.infrastructure.designer.emf.diagram; singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: .
+Bundle-ClassPath: .,
+ lib/javax.ws.rs-api-2.0.1.jar,
+ lib/jersey-client.jar,
+ lib/jersey-common.jar,
+ lib/hk2-api-2.4.0-b31.jar,
+ lib/jersey-guava-2.22.1.jar
 Bundle-Activator: containers.diagram.part.ContainersDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
