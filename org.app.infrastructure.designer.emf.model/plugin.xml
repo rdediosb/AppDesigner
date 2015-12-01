@@ -14,4 +14,11 @@
             genModel="model/containers.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated containers -->
+      <parser
+            type="containers"
+            class="containers.util.ContainersResourceFactoryImpl"/>
+   </extension>
+
 </plugin>
