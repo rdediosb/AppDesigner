@@ -8,6 +8,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
@@ -153,14 +154,12 @@ public class ServicePropertiesDialog extends TitleAreaDialog{
 		createButton(parent, IDialogConstants.OK_ID, "Select", false);
 		parent.getShell().setDefaultButton(btnSearch);
 	}
-
-	@Override
-	protected void okPressed() {
-//		this.service.setImage(value);
-		setReturnCode(0);
-		close();
-	}
 	
+	public String getResult()
+	{
+		return this.selection;
+	}
+	  
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);

@@ -9,10 +9,10 @@
     <genClasses ecoreClass="containers.ecore#//Service">
       <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference containers.ecore#//Service/link"/>
-      <genFeatures createChild="false" propertyCategory="" propertyDescription=""
-          ecoreFeature="ecore:EReference containers.ecore#//Service/image"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//Service/host_port"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//Service/container_port"/>
+      <genFeatures createChild="false" propertyCategory="" propertyDescription=""
+          ecoreFeature="ecore:EAttribute containers.ecore#//Service/image"/>
     </genClasses>
     <genClasses ecoreClass="containers.ecore#//NamedElement">
       <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute containers.ecore#//NamedElement/name"/>

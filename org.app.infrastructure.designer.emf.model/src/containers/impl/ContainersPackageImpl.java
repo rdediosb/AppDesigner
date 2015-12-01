@@ -135,8 +135,8 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getService_Image() {
-		return (EReference)serviceEClass.getEStructuralFeatures().get(1);
+	public EAttribute getService_Image() {
+		return (EAttribute)serviceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -145,7 +145,7 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * @generated
 	 */
 	public EAttribute getService_Host_port() {
-		return (EAttribute)serviceEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)serviceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 	 * @generated
 	 */
 	public EAttribute getService_Container_port() {
-		return (EAttribute)serviceEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)serviceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -259,9 +259,9 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 		// Create classes and their features
 		serviceEClass = createEClass(SERVICE);
 		createEReference(serviceEClass, SERVICE__LINK);
-		createEReference(serviceEClass, SERVICE__IMAGE);
 		createEAttribute(serviceEClass, SERVICE__HOST_PORT);
 		createEAttribute(serviceEClass, SERVICE__CONTAINER_PORT);
+		createEAttribute(serviceEClass, SERVICE__IMAGE);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
@@ -309,9 +309,9 @@ public class ContainersPackageImpl extends EPackageImpl implements ContainersPac
 		// Initialize classes, features, and operations; add parameters
 		initEClass(serviceEClass, Service.class, "Service", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getService_Link(), this.getService(), null, "link", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getService_Image(), this.getImage(), null, "image", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getService_Host_port(), ecorePackage.getEInt(), "host_port", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getService_Container_port(), ecorePackage.getEInt(), "container_port", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getService_Image(), ecorePackage.getEString(), "image", null, 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

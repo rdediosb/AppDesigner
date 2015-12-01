@@ -20,11 +20,9 @@ public class DockerImageDialogCellEditor extends ExtendedDialogCellEditor {
 	protected Object openDialogBox(Control cellEditorWindow) {
 		ServicePropertiesDialog dialog = new ServicePropertiesDialog(cellEditorWindow.getShell(), (Service)eObject);
 
-		Object returnCode = dialog.open();
+		dialog.open();
 
-		System.out.println(returnCode);
-
-		return returnCode;
+		return dialog.getResult();
 	}
 
 }

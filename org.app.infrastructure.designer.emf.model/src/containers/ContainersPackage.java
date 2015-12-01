@@ -140,22 +140,13 @@ public interface ContainersPackage extends EPackage {
 	int SERVICE__LINK = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Image</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE__IMAGE = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Host port</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE__HOST_PORT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int SERVICE__HOST_PORT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Container port</b></em>' attribute.
@@ -164,7 +155,16 @@ public interface ContainersPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE__CONTAINER_PORT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int SERVICE__CONTAINER_PORT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__IMAGE = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Service</em>' class.
@@ -308,15 +308,15 @@ public interface ContainersPackage extends EPackage {
 	EReference getService_Link();
 
 	/**
-	 * Returns the meta object for the reference '{@link containers.Service#getImage <em>Image</em>}'.
+	 * Returns the meta object for the attribute '{@link containers.Service#getImage <em>Image</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Image</em>'.
+	 * @return the meta object for the attribute '<em>Image</em>'.
 	 * @see containers.Service#getImage()
 	 * @see #getService()
 	 * @generated
 	 */
-	EReference getService_Image();
+	EAttribute getService_Image();
 
 	/**
 	 * Returns the meta object for the attribute '{@link containers.Service#getHost_port <em>Host port</em>}'.
@@ -467,12 +467,12 @@ public interface ContainersPackage extends EPackage {
 		EReference SERVICE__LINK = eINSTANCE.getService_Link();
 
 		/**
-		 * The meta object literal for the '<em><b>Image</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Image</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SERVICE__IMAGE = eINSTANCE.getService_Image();
+		EAttribute SERVICE__IMAGE = eINSTANCE.getService_Image();
 
 		/**
 		 * The meta object literal for the '<em><b>Host port</b></em>' attribute feature.

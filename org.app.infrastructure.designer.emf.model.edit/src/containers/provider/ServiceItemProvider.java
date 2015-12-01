@@ -45,9 +45,9 @@ public class ServiceItemProvider extends NamedElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addImagePropertyDescriptor(object);
 			addHost_portPropertyDescriptor(object);
 			addContainer_portPropertyDescriptor(object);
+			addImagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -69,7 +69,7 @@ public class ServiceItemProvider extends NamedElementItemProvider {
 				 true,
 				 false,
 				 false,
-				 null,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -156,9 +156,9 @@ public class ServiceItemProvider extends NamedElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Service.class)) {
-			case ContainersPackage.SERVICE__IMAGE:
 			case ContainersPackage.SERVICE__HOST_PORT:
 			case ContainersPackage.SERVICE__CONTAINER_PORT:
+			case ContainersPackage.SERVICE__IMAGE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

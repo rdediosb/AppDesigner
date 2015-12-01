@@ -13,9 +13,9 @@ package containers;
  * </p>
  * <ul>
  *   <li>{@link containers.Service#getLink <em>Link</em>}</li>
- *   <li>{@link containers.Service#getImage <em>Image</em>}</li>
  *   <li>{@link containers.Service#getHost_port <em>Host port</em>}</li>
  *   <li>{@link containers.Service#getContainer_port <em>Container port</em>}</li>
+ *   <li>{@link containers.Service#getImage <em>Image</em>}</li>
  * </ul>
  *
  * @see containers.ContainersPackage#getService()
@@ -50,30 +50,30 @@ public interface Service extends NamedElement {
 	void setLink(Service value);
 
 	/**
-	 * Returns the value of the '<em><b>Image</b></em>' reference.
+	 * Returns the value of the '<em><b>Image</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Image</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Image</em>' reference.
-	 * @see #setImage(Image)
+	 * @return the value of the '<em>Image</em>' attribute.
+	 * @see #setImage(String)
 	 * @see containers.ContainersPackage#getService_Image()
 	 * @model
 	 * @generated
 	 */
-	Image getImage();
+	String getImage();
 
 	/**
-	 * Sets the value of the '{@link containers.Service#getImage <em>Image</em>}' reference.
+	 * Sets the value of the '{@link containers.Service#getImage <em>Image</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Image</em>' reference.
+	 * @param value the new value of the '<em>Image</em>' attribute.
 	 * @see #getImage()
 	 * @generated
 	 */
-	void setImage(Image value);
+	void setImage(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Host port</b></em>' attribute.

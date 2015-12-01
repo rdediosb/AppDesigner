@@ -533,6 +533,10 @@ public class ContainersDocumentProvider extends AbstractDocumentProvider impleme
 					if (nextResource.isLoaded() && !info.getEditingDomain().isReadOnly(nextResource)) {
 						try {
 							nextResource.save(ContainersDiagramEditorUtil.getSaveOptions());
+							if(nextResource.getURI().fileExtension().equals("containers"))
+							{
+								System.out.println("aaa");
+							}
 						} catch (IOException e) {
 							fireElementStateChangeFailed(element);
 							throw new CoreException(new Status(IStatus.ERROR, ContainersDiagramEditorPlugin.ID,
