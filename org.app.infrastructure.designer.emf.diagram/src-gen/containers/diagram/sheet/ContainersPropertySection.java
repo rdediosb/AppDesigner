@@ -55,11 +55,8 @@ public class ContainersPropertySection extends DefaultPropertySection implements
 							public CellEditor createPropertyEditor(Composite composite) {
 								EStructuralFeature feature = (EStructuralFeature) itemPropertyDescriptor
 										.getFeature(this.object);
-								if (feature == ContainersPackage.Literals.SERVICE__IMAGE) {
-									System.out.println("lalalala");
-
-									return new DockerImageDialogCellEditor(composite, getEditLabelProvider(), object);
-
+								if (feature == ContainersPackage.Literals.SERVICE__IMAGE || feature == ContainersPackage.Literals.SERVICE__ENVS) {
+									return new DockerImageDialogCellEditor(composite, getEditLabelProvider(), object, feature);
 								}
 								return super.createPropertyEditor(composite);
 							}

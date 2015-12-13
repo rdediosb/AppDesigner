@@ -8,13 +8,9 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.jface.dialogs.IDialogConstants;
-import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
@@ -35,17 +31,14 @@ import org.json.JSONObject;
 import containers.Service;
 import containers.diagram.part.ContainersDiagramEditorPlugin;
 
-public class ServicePropertiesDialog extends TitleAreaDialog{
+public class ServiceImageDialog extends ContainerPropertyDialog{
 
-	private Service service;
 	private Text text;
 	private Table table;
 	private Button btnSearch;
-	private String selection;
 	  
-	public ServicePropertiesDialog(Shell parentShell, Service srv) {
-		super(parentShell);
-		service = srv;
+	public ServiceImageDialog(Shell parentShell, Service srv) {
+		super(parentShell,srv);
 	}
 
 	@Override
@@ -70,7 +63,7 @@ public class ServicePropertiesDialog extends TitleAreaDialog{
 		text.setBounds(21, 15, 498, 19);
 		
 		table = new Table(grpServiceConfiguration, SWT.BORDER | SWT.FULL_SELECTION | SWT.VIRTUAL);
-		table.setBounds(21, 47, 573, 129);
+		table.setBounds(21, 47, 573, 169);
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 		
@@ -150,24 +143,7 @@ public class ServicePropertiesDialog extends TitleAreaDialog{
 	
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
-		createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, true);
-		createButton(parent, IDialogConstants.OK_ID, "Select", false);
+		super.createButtonsForButtonBar(parent);
 		parent.getShell().setDefaultButton(btnSearch);
-	}
-	
-	public String getResult()
-	{
-		return this.selection;
-	}
-	  
-	@Override
-	protected void configureShell(Shell newShell) {
-		super.configureShell(newShell);
-		newShell.setText(service.getName());
-	}
-
-	@Override
-	protected Point getInitialSize() {
-		return new Point(638, 375);
 	}
 }

@@ -2,7 +2,7 @@ package containers.diagram.edit.parts;
 
 import java.util.Collections;
 import java.util.List;
-import org.app.infrastructure.designer.emf.diagram.dialogs.ServicePropertiesDialog;
+import org.app.infrastructure.designer.emf.diagram.dialogs.ServiceImageDialog;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MarginBorder;
@@ -96,7 +96,7 @@ public class ServiceEditPart extends AbstractBorderedShapeEditPart {
 
 			Service service = (Service) ((org.eclipse.gmf.runtime.notation.Shape) this.getModel()).getElement();
 
-			ServicePropertiesDialog dialog = new ServicePropertiesDialog(shell, service);
+			ServiceImageDialog dialog = new ServiceImageDialog(shell, service);
 
 			Object returnCode = dialog.open();
 
