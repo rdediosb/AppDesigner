@@ -41,6 +41,8 @@ import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.FontData;
 
+import containers.diagram.edit.parts.ApplicationEditPart;
+import containers.diagram.edit.parts.ApplicationNameEditPart;
 import containers.diagram.edit.parts.ComposeEditPart;
 import containers.diagram.edit.parts.ServiceEditPart;
 import containers.diagram.edit.parts.ServiceLinkEditPart;
@@ -130,6 +132,7 @@ public class ContainersViewProvider extends AbstractProvider implements IViewPro
 				}
 				switch (visualID) {
 				case ServiceEditPart.VISUAL_ID:
+				case ApplicationEditPart.VISUAL_ID:
 					if (domainElement == null || visualID != ContainersVisualIDRegistry
 							.getNodeVisualID(op.getContainerView(), domainElement)) {
 						return false; // visual id in semantic hint should match visual id for domain element
@@ -140,7 +143,7 @@ public class ContainersViewProvider extends AbstractProvider implements IViewPro
 				}
 			}
 		}
-		return ServiceEditPart.VISUAL_ID == visualID;
+		return ServiceEditPart.VISUAL_ID == visualID || ApplicationEditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -191,6 +194,8 @@ public class ContainersViewProvider extends AbstractProvider implements IViewPro
 		switch (visualID) {
 		case ServiceEditPart.VISUAL_ID:
 			return createService_2001(domainElement, containerView, index, persisted, preferencesHint);
+		case ApplicationEditPart.VISUAL_ID:
+			return createApplication_2002(domainElement, containerView, index, persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
 		return null;
@@ -245,6 +250,43 @@ public class ContainersViewProvider extends AbstractProvider implements IViewPro
 		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
 		Node label5001 = createLabel(node, ContainersVisualIDRegistry.getType(ServiceNameEditPart.VISUAL_ID));
+		return node;
+	}
+
+	/**
+	* @generated
+	*/
+	public Node createApplication_2002(EObject domainElement, View containerView, int index, boolean persisted,
+			PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(ContainersVisualIDRegistry.getType(ApplicationEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		stampShortcut(containerView, node);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+					IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5002 = createLabel(node, ContainersVisualIDRegistry.getType(ApplicationNameEditPart.VISUAL_ID));
 		return node;
 	}
 

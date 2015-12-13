@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated containers -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="containers.presentation.ContainersModelWizardID"
+            name="%_UI_ContainersModelWizard_label"
+            class="containers.presentation.ContainersModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ContainersModelFile.gif">
+         <description>%_UI_ContainersModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated containers -->
+      <editor
+            id="containers.presentation.ContainersEditorID"
+            name="%_UI_ContainersEditor_label"
+            icon="icons/full/obj16/ContainersModelFile.gif"
+            extensions="containers"
+            class="containers.presentation.ContainersEditor"
+            contributorClass="containers.presentation.ContainersActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

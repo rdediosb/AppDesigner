@@ -2,7 +2,6 @@
  */
 package containers.util;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -10,13 +9,9 @@ import java.io.PrintWriter;
 import java.util.Map;
 
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 import containers.Compose;
@@ -45,13 +40,6 @@ public class ContainersResourceImpl extends XMIResourceImpl {
 	public void doSave(OutputStream outputStream, Map<?, ?> options) throws IOException
 	{
 		Compose compose = (Compose)this.contents.get(0);
-		
-		
-//		IFile f = IProject or IFolder.getFile (filename);
-//		FileOutputStream fout = new FileOutputStream(f.getLocation().toOSString());
-//		fout.write(....);
-//		f.refreshLocal(IResource.DEPTH_INFINITE, null); // DEPTH_ZERO does not
-//		
 	    
 		FileWriter fichero = null;
         PrintWriter pw = null;

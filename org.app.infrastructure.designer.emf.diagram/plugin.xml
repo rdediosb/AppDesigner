@@ -217,7 +217,7 @@
       <viewProvider class="containers.diagram.providers.ContainersViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Containers"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -230,13 +230,13 @@
             <method name="getType()" value="Containers"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2001"/>
+            <method name="getType()" value="2001,2002"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5001"/>
+            <method name="getType()" value="5001,5002"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
             <method name="getType()" value=""/>
@@ -257,6 +257,11 @@
          <Priority name="Lowest"/>
          <object class="containers.diagram.edit.parts.ServiceEditPart" id="Service_2001"/>
          <context elements="Service_2001"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="containers.diagram.providers.assistants.ContainersModelingAssistantProviderOfApplicationEditPart">
+         <Priority name="Lowest"/>
+         <object class="containers.diagram.edit.parts.ApplicationEditPart" id="Application_2002"/>
+         <context elements="Application_2002"/>
       </modelingAssistantProvider>
       
    </extension>
@@ -299,6 +304,16 @@
          </metamodelType>
       </metamodel>
       <metamodel nsURI="https://github.com/rdediosb/AppDesigner">
+         <metamodelType
+               id="org.app.infrastructure.designer.emf.diagram.Application_2002"
+               name="%metatype.name.Application_2002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Application"
+               edithelper="containers.diagram.edit.helpers.ApplicationEditHelper">
+            <param name="semanticHint" value="2002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="https://github.com/rdediosb/AppDesigner">
          <specializationType
                id="org.app.infrastructure.designer.emf.diagram.ServiceLink_4001"
                name="%metatype.name.ServiceLink_4001"
@@ -321,6 +336,7 @@
       <binding context="org.app.infrastructure.designer.emf.diagram.TypeContext">
          <elementType ref="org.app.infrastructure.designer.emf.diagram.Compose_1000"/>
          <elementType ref="org.app.infrastructure.designer.emf.diagram.Service_2001"/>
+         <elementType ref="org.app.infrastructure.designer.emf.diagram.Application_2002"/>
          <elementType ref="org.app.infrastructure.designer.emf.diagram.ServiceLink_4001"/>
          <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
       </binding>

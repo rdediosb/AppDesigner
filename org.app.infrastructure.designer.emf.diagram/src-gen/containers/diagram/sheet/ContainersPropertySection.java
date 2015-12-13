@@ -39,7 +39,6 @@ public class ContainersPropertySection extends DefaultPropertySection implements
 	@Override
 	public IPropertySource getPropertySource(Object object) {
 
-
 		if (object instanceof IPropertySource) {
 			return (IPropertySource) object;
 		}
@@ -47,21 +46,20 @@ public class ContainersPropertySection extends DefaultPropertySection implements
 		if (af != null) {
 			IItemPropertySource ips = (IItemPropertySource) af.adapt(object, IItemPropertySource.class);
 			if (ips != null) {
-				return new PropertySource(object, ips){
+				return new PropertySource(object, ips) {
 					@Override
-					protected IPropertyDescriptor createPropertyDescriptor(IItemPropertyDescriptor itemPropertyDescriptor)
-					{
-						return new PropertyDescriptor(object, itemPropertyDescriptor)
-						{
+					protected IPropertyDescriptor createPropertyDescriptor(
+							IItemPropertyDescriptor itemPropertyDescriptor) {
+						return new PropertyDescriptor(object, itemPropertyDescriptor) {
 							@Override
-							public CellEditor createPropertyEditor(Composite composite)
-							{
-								EStructuralFeature feature = (EStructuralFeature)itemPropertyDescriptor.getFeature(this.object);
-								if(feature==ContainersPackage.Literals.SERVICE__IMAGE){
-									System.out.println("lalalala");	
-									
+							public CellEditor createPropertyEditor(Composite composite) {
+								EStructuralFeature feature = (EStructuralFeature) itemPropertyDescriptor
+										.getFeature(this.object);
+								if (feature == ContainersPackage.Literals.SERVICE__IMAGE) {
+									System.out.println("lalalala");
+
 									return new DockerImageDialogCellEditor(composite, getEditLabelProvider(), object);
-	
+
 								}
 								return super.createPropertyEditor(composite);
 							}

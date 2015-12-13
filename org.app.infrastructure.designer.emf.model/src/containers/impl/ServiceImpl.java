@@ -2,15 +2,21 @@
  */
 package containers.impl;
 
+import containers.Application;
 import containers.ContainersPackage;
 import containers.Service;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +30,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link containers.impl.ServiceImpl#getHost_port <em>Host port</em>}</li>
  *   <li>{@link containers.impl.ServiceImpl#getContainer_port <em>Container port</em>}</li>
  *   <li>{@link containers.impl.ServiceImpl#getImage <em>Image</em>}</li>
+ *   <li>{@link containers.impl.ServiceImpl#getApp <em>App</em>}</li>
+ *   <li>{@link containers.impl.ServiceImpl#getEnvs <em>Envs</em>}</li>
  * </ul>
  *
  * @generated
@@ -98,6 +106,26 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 	 * @ordered
 	 */
 	protected String image = IMAGE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getApp() <em>App</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApp()
+	 * @generated
+	 * @ordered
+	 */
+	protected Application app;
+
+	/**
+	 * The cached value of the '{@link #getEnvs() <em>Envs</em>}' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnvs()
+	 * @generated
+	 * @ordered
+	 */
+	protected EMap<String, String> envs;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -182,6 +210,70 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Application getApp() {
+		if (app != null && app.eIsProxy()) {
+			InternalEObject oldApp = (InternalEObject)app;
+			app = (Application)eResolveProxy(oldApp);
+			if (app != oldApp) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContainersPackage.SERVICE__APP, oldApp, app));
+			}
+		}
+		return app;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Application basicGetApp() {
+		return app;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApp(Application newApp) {
+		Application oldApp = app;
+		app = newApp;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ContainersPackage.SERVICE__APP, oldApp, app));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EMap<String, String> getEnvs() {
+		if (envs == null) {
+			envs = new EcoreEMap<String,String>(ContainersPackage.Literals.ENKV, ENKVImpl.class, this, ContainersPackage.SERVICE__ENVS);
+		}
+		return envs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ContainersPackage.SERVICE__ENVS:
+				return ((InternalEList<?>)getEnvs()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getHost_port() {
 		return host_port;
 	}
@@ -236,6 +328,12 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 				return getContainer_port();
 			case ContainersPackage.SERVICE__IMAGE:
 				return getImage();
+			case ContainersPackage.SERVICE__APP:
+				if (resolve) return getApp();
+				return basicGetApp();
+			case ContainersPackage.SERVICE__ENVS:
+				if (coreType) return getEnvs();
+				else return getEnvs().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -259,6 +357,12 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 				return;
 			case ContainersPackage.SERVICE__IMAGE:
 				setImage((String)newValue);
+				return;
+			case ContainersPackage.SERVICE__APP:
+				setApp((Application)newValue);
+				return;
+			case ContainersPackage.SERVICE__ENVS:
+				((EStructuralFeature.Setting)getEnvs()).set(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -284,6 +388,12 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 			case ContainersPackage.SERVICE__IMAGE:
 				setImage(IMAGE_EDEFAULT);
 				return;
+			case ContainersPackage.SERVICE__APP:
+				setApp((Application)null);
+				return;
+			case ContainersPackage.SERVICE__ENVS:
+				getEnvs().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -304,6 +414,10 @@ public class ServiceImpl extends NamedElementImpl implements Service {
 				return container_port != CONTAINER_PORT_EDEFAULT;
 			case ContainersPackage.SERVICE__IMAGE:
 				return IMAGE_EDEFAULT == null ? image != null : !IMAGE_EDEFAULT.equals(image);
+			case ContainersPackage.SERVICE__APP:
+				return app != null;
+			case ContainersPackage.SERVICE__ENVS:
+				return envs != null && !envs.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

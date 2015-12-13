@@ -20,8 +20,9 @@ public class ContainersModelingAssistantProviderOfComposeEditPart extends Contai
 	@Override
 
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(1);
+		List<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(ContainersElementTypes.Service_2001);
+		types.add(ContainersElementTypes.Application_2002);
 		return types;
 	}
 

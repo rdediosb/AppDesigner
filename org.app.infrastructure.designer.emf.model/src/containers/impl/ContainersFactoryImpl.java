@@ -4,6 +4,7 @@ package containers.impl;
 
 import containers.*;
 
+import java.util.Map;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -60,6 +61,8 @@ public class ContainersFactoryImpl extends EFactoryImpl implements ContainersFac
 			case ContainersPackage.NAMED_ELEMENT: return createNamedElement();
 			case ContainersPackage.COMPOSE: return createCompose();
 			case ContainersPackage.IMAGE: return createImage();
+			case ContainersPackage.APPLICATION: return createApplication();
+			case ContainersPackage.ENKV: return (EObject)createENKV();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -103,6 +106,26 @@ public class ContainersFactoryImpl extends EFactoryImpl implements ContainersFac
 	public Image createImage() {
 		ImageImpl image = new ImageImpl();
 		return image;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Application createApplication() {
+		ApplicationImpl application = new ApplicationImpl();
+		return application;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<String, String> createENKV() {
+		ENKVImpl enkv = new ENKVImpl();
+		return enkv;
 	}
 
 	/**

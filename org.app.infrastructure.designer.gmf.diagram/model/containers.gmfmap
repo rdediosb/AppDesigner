@@ -17,13 +17,36 @@
         <diagramLabel
             href="containers.gmfgraph#ServiceName"/>
         <features
-            href="../../org.app.infrastructure.designer.emf.model/model/containers.ecore#//NamedElement/name"/>
+            href="../../org.app.infrastructure.designer.emf.model/model/containers.ecore#//Service/image"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
           href="containers.gmftool#//@palette/@tools.0/@tools.0"/>
       <diagramNode
           href="containers.gmfgraph#Service"/>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="../../org.app.infrastructure.designer.emf.model/model/containers.ecore#//Compose/applications"/>
+    <ownedChild>
+      <domainMetaElement
+          href="../../org.app.infrastructure.designer.emf.model/model/containers.ecore#//Application"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping"
+          viewPattern=""
+          editorPattern=""
+          editPattern="">
+        <diagramLabel
+            href="containers.gmfgraph#ApplicationName"/>
+        <features
+            href="../../org.app.infrastructure.designer.emf.model/model/containers.ecore#//NamedElement/name"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="containers.gmftool#//@palette/@tools.0/@tools.2"/>
+      <diagramNode
+          href="containers.gmfgraph#Application"/>
     </ownedChild>
   </nodes>
   <links>

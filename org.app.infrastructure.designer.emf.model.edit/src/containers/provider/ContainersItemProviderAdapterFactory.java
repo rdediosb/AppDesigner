@@ -164,6 +164,52 @@ public class ContainersItemProviderAdapterFactory extends ContainersAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link containers.Application} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ApplicationItemProvider applicationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link containers.Application}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createApplicationAdapter() {
+		if (applicationItemProvider == null) {
+			applicationItemProvider = new ApplicationItemProvider(this);
+		}
+
+		return applicationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ENKVItemProvider enkvItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createENKVAdapter() {
+		if (enkvItemProvider == null) {
+			enkvItemProvider = new ENKVItemProvider(this);
+		}
+
+		return enkvItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -266,6 +312,8 @@ public class ContainersItemProviderAdapterFactory extends ContainersAdapterFacto
 		if (namedElementItemProvider != null) namedElementItemProvider.dispose();
 		if (composeItemProvider != null) composeItemProvider.dispose();
 		if (imageItemProvider != null) imageItemProvider.dispose();
+		if (applicationItemProvider != null) applicationItemProvider.dispose();
+		if (enkvItemProvider != null) enkvItemProvider.dispose();
 	}
 
 }

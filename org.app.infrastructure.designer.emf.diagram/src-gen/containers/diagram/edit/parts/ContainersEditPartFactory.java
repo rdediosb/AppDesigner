@@ -31,6 +31,12 @@ public class ContainersEditPartFactory implements EditPartFactory {
 			case ServiceNameEditPart.VISUAL_ID:
 				return new ServiceNameEditPart(view);
 
+			case ApplicationEditPart.VISUAL_ID:
+				return new ApplicationEditPart(view);
+
+			case ApplicationNameEditPart.VISUAL_ID:
+				return new ApplicationNameEditPart(view);
+
 			case ServiceLinkEditPart.VISUAL_ID:
 				return new ServiceLinkEditPart(view);
 

@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import java.util.Set;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -30,6 +32,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.update.UpdaterLinkDescriptor;
 
 import containers.ContainersPackage;
+import containers.diagram.edit.parts.ApplicationEditPart;
 import containers.diagram.edit.parts.ComposeEditPart;
 import containers.diagram.edit.parts.ServiceEditPart;
 import containers.diagram.part.ContainersDiagramUpdater;
@@ -41,6 +44,11 @@ import containers.diagram.part.ContainersVisualIDRegistry;
  * @generated
  */
 public class ComposeCanonicalEditPolicy extends CanonicalEditPolicy {
+
+	/**
+	* @generated
+	*/
+	private Set<EStructuralFeature> myFeaturesToSynchronize;
 
 	/**
 	* @generated
@@ -57,8 +65,13 @@ public class ComposeCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	* @generated
 	*/
-	protected EStructuralFeature getFeatureToSynchronize() {
-		return ContainersPackage.eINSTANCE.getCompose_Services();
+	protected Set getFeaturesToSynchronize() {
+		if (myFeaturesToSynchronize == null) {
+			myFeaturesToSynchronize = new HashSet<EStructuralFeature>();
+			myFeaturesToSynchronize.add(ContainersPackage.eINSTANCE.getCompose_Services());
+			myFeaturesToSynchronize.add(ContainersPackage.eINSTANCE.getCompose_Applications());
+		}
+		return myFeaturesToSynchronize;
 	}
 
 	/**
@@ -88,7 +101,8 @@ public class ComposeCanonicalEditPolicy extends CanonicalEditPolicy {
 	* @generated
 	*/
 	private boolean isMyDiagramElement(View view) {
-		return ServiceEditPart.VISUAL_ID == ContainersVisualIDRegistry.getVisualID(view);
+		int visualID = ContainersVisualIDRegistry.getVisualID(view);
+		return visualID == ServiceEditPart.VISUAL_ID || visualID == ApplicationEditPart.VISUAL_ID;
 	}
 
 	/**
@@ -235,6 +249,13 @@ public class ComposeCanonicalEditPolicy extends CanonicalEditPolicy {
 		case ServiceEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(ContainersDiagramUpdater.getService_2001ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case ApplicationEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(ContainersDiagramUpdater.getApplication_2002ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

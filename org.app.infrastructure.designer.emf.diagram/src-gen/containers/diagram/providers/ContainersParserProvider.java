@@ -14,6 +14,7 @@ import org.eclipse.gmf.runtime.emf.ui.services.parser.ParserHintAdapter;
 import org.eclipse.gmf.runtime.notation.View;
 
 import containers.ContainersPackage;
+import containers.diagram.edit.parts.ApplicationNameEditPart;
 import containers.diagram.edit.parts.ServiceNameEditPart;
 import containers.diagram.parsers.MessageFormatParser;
 import containers.diagram.part.ContainersVisualIDRegistry;
@@ -26,18 +27,35 @@ public class ContainersParserProvider extends AbstractProvider implements IParse
 	/**
 	* @generated
 	*/
-	private IParser serviceName_5001Parser;
+	private IParser serviceImage_5001Parser;
 
 	/**
 	* @generated
 	*/
-	private IParser getServiceName_5001Parser() {
-		if (serviceName_5001Parser == null) {
+	private IParser getServiceImage_5001Parser() {
+		if (serviceImage_5001Parser == null) {
+			EAttribute[] features = new EAttribute[] { ContainersPackage.eINSTANCE.getService_Image() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			serviceImage_5001Parser = parser;
+		}
+		return serviceImage_5001Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser applicationName_5002Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getApplicationName_5002Parser() {
+		if (applicationName_5002Parser == null) {
 			EAttribute[] features = new EAttribute[] { ContainersPackage.eINSTANCE.getNamedElement_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			serviceName_5001Parser = parser;
+			applicationName_5002Parser = parser;
 		}
-		return serviceName_5001Parser;
+		return applicationName_5002Parser;
 	}
 
 	/**
@@ -46,7 +64,9 @@ public class ContainersParserProvider extends AbstractProvider implements IParse
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
 		case ServiceNameEditPart.VISUAL_ID:
-			return getServiceName_5001Parser();
+			return getServiceImage_5001Parser();
+		case ApplicationNameEditPart.VISUAL_ID:
+			return getApplicationName_5002Parser();
 		}
 		return null;
 	}

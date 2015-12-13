@@ -32,7 +32,8 @@ public class ContainersPaletteFactory {
 		PaletteGroup paletteContainer = new PaletteGroup(Messages.Containers1Group_title);
 		paletteContainer.setId("createContainers1Group"); //$NON-NLS-1$
 		paletteContainer.add(createService1CreationTool());
-		paletteContainer.add(createServiceLink2CreationTool());
+		paletteContainer.add(createLink2CreationTool());
+		paletteContainer.add(createApplication3CreationTool());
 		return paletteContainer;
 	}
 
@@ -51,12 +52,26 @@ public class ContainersPaletteFactory {
 	/**
 	* @generated
 	*/
-	private ToolEntry createServiceLink2CreationTool() {
-		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(Messages.ServiceLink2CreationTool_title,
-				Messages.ServiceLink2CreationTool_desc,
-				Collections.singletonList(ContainersElementTypes.ServiceLink_4001));
-		entry.setId("createServiceLink2CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(ContainersElementTypes.getImageDescriptor(ContainersElementTypes.ServiceLink_4001));
+	private ToolEntry createLink2CreationTool() {
+		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(Messages.Link2CreationTool_title,
+				Messages.Link2CreationTool_desc, Collections.singletonList(ContainersElementTypes.ServiceLink_4001));
+		entry.setId("createLink2CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(ContainersDiagramEditorPlugin
+				.findImageDescriptor("/org.app.infrastructure.designer.emf.model.edit/icons/full/obj16/Link.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createApplication3CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Application3CreationTool_title,
+				Messages.Application3CreationTool_desc,
+				Collections.singletonList(ContainersElementTypes.Application_2002));
+		entry.setId("createApplication3CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(ContainersDiagramEditorPlugin
+				.findImageDescriptor("/org.app.infrastructure.designer.emf.model.edit/icons/full/obj16/Link.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

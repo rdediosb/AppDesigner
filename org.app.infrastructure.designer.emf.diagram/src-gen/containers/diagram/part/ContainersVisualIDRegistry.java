@@ -9,6 +9,8 @@ import org.eclipse.gmf.tooling.runtime.structure.DiagramStructure;
 
 import containers.Compose;
 import containers.ContainersPackage;
+import containers.diagram.edit.parts.ApplicationEditPart;
+import containers.diagram.edit.parts.ApplicationNameEditPart;
 import containers.diagram.edit.parts.ComposeEditPart;
 import containers.diagram.edit.parts.ServiceEditPart;
 import containers.diagram.edit.parts.ServiceNameEditPart;
@@ -118,6 +120,9 @@ public class ContainersVisualIDRegistry {
 			if (ContainersPackage.eINSTANCE.getService().isSuperTypeOf(domainElement.eClass())) {
 				return ServiceEditPart.VISUAL_ID;
 			}
+			if (ContainersPackage.eINSTANCE.getApplication().isSuperTypeOf(domainElement.eClass())) {
+				return ApplicationEditPart.VISUAL_ID;
+			}
 			break;
 		}
 		return -1;
@@ -146,9 +151,17 @@ public class ContainersVisualIDRegistry {
 			if (ServiceEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (ApplicationEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case ServiceEditPart.VISUAL_ID:
 			if (ServiceNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case ApplicationEditPart.VISUAL_ID:
+			if (ApplicationNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -203,6 +216,7 @@ public class ContainersVisualIDRegistry {
 		case ComposeEditPart.VISUAL_ID:
 			return false;
 		case ServiceEditPart.VISUAL_ID:
+		case ApplicationEditPart.VISUAL_ID:
 			return true;
 		default:
 			break;

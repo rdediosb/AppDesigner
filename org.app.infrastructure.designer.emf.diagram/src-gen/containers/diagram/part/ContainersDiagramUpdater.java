@@ -13,9 +13,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.update.DiagramUpdater;
 
+import containers.Application;
 import containers.Compose;
 import containers.ContainersPackage;
 import containers.Service;
+import containers.diagram.edit.parts.ApplicationEditPart;
 import containers.diagram.edit.parts.ComposeEditPart;
 import containers.diagram.edit.parts.ServiceEditPart;
 import containers.diagram.edit.parts.ServiceLinkEditPart;
@@ -54,6 +56,14 @@ public class ContainersDiagramUpdater {
 				continue;
 			}
 		}
+		for (Iterator<?> it = modelElement.getApplications().iterator(); it.hasNext();) {
+			Application childElement = (Application) it.next();
+			int visualID = ContainersVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == ApplicationEditPart.VISUAL_ID) {
+				result.add(new ContainersNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
 		return result;
 	}
 
@@ -66,6 +76,8 @@ public class ContainersDiagramUpdater {
 			return getCompose_1000ContainedLinks(view);
 		case ServiceEditPart.VISUAL_ID:
 			return getService_2001ContainedLinks(view);
+		case ApplicationEditPart.VISUAL_ID:
+			return getApplication_2002ContainedLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -77,6 +89,8 @@ public class ContainersDiagramUpdater {
 		switch (ContainersVisualIDRegistry.getVisualID(view)) {
 		case ServiceEditPart.VISUAL_ID:
 			return getService_2001IncomingLinks(view);
+		case ApplicationEditPart.VISUAL_ID:
+			return getApplication_2002IncomingLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -88,6 +102,8 @@ public class ContainersDiagramUpdater {
 		switch (ContainersVisualIDRegistry.getVisualID(view)) {
 		case ServiceEditPart.VISUAL_ID:
 			return getService_2001OutgoingLinks(view);
+		case ApplicationEditPart.VISUAL_ID:
+			return getApplication_2002OutgoingLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -110,6 +126,13 @@ public class ContainersDiagramUpdater {
 	}
 
 	/**
+	* @generated
+	*/
+	public static List<ContainersLinkDescriptor> getApplication_2002ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
 	 * @generated
 	 */
 	public static List<ContainersLinkDescriptor> getService_2001IncomingLinks(View view) {
@@ -122,6 +145,13 @@ public class ContainersDiagramUpdater {
 	}
 
 	/**
+	* @generated
+	*/
+	public static List<ContainersLinkDescriptor> getApplication_2002IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
 	 * @generated
 	 */
 	public static List<ContainersLinkDescriptor> getService_2001OutgoingLinks(View view) {
@@ -129,6 +159,13 @@ public class ContainersDiagramUpdater {
 		LinkedList<ContainersLinkDescriptor> result = new LinkedList<ContainersLinkDescriptor>();
 		result.addAll(getOutgoingFeatureModelFacetLinks_Service_Link_4001(modelElement));
 		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<ContainersLinkDescriptor> getApplication_2002OutgoingLinks(View view) {
+		return Collections.emptyList();
 	}
 
 	/**

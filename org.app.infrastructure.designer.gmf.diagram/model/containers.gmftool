@@ -20,12 +20,21 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="ServiceLink"
+          title="Link"
           description="Create new ServiceLink">
         <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="/icons/full/obj16/Link.gif"
+            bundle="org.app.infrastructure.designer.emf.model.edit"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Application"
+          description="Create Application Component">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/full/obj16/Link.gif"
+            bundle="org.app.infrastructure.designer.emf.model.edit"/>
       </tools>
     </tools>
   </palette>

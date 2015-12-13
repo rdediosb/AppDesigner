@@ -79,6 +79,7 @@ public class ComposeItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ContainersPackage.Literals.COMPOSE__SERVICES);
 			childrenFeatures.add(ContainersPackage.Literals.COMPOSE__IMAGES);
+			childrenFeatures.add(ContainersPackage.Literals.COMPOSE__APPLICATIONS);
 		}
 		return childrenFeatures;
 	}
@@ -133,6 +134,7 @@ public class ComposeItemProvider
 		switch (notification.getFeatureID(Compose.class)) {
 			case ContainersPackage.COMPOSE__SERVICES:
 			case ContainersPackage.COMPOSE__IMAGES:
+			case ContainersPackage.COMPOSE__APPLICATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -159,6 +161,11 @@ public class ComposeItemProvider
 			(createChildParameter
 				(ContainersPackage.Literals.COMPOSE__IMAGES,
 				 ContainersFactory.eINSTANCE.createImage()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ContainersPackage.Literals.COMPOSE__APPLICATIONS,
+				 ContainersFactory.eINSTANCE.createApplication()));
 	}
 
 	/**

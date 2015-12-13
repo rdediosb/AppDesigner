@@ -167,13 +167,31 @@ public interface ContainersPackage extends EPackage {
 	int SERVICE__IMAGE = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>App</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__APP = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Envs</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE__ENVS = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Service</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int SERVICE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Service</em>' class.
@@ -213,13 +231,22 @@ public interface ContainersPackage extends EPackage {
 	int COMPOSE__IMAGES = 1;
 
 	/**
+	 * The feature id for the '<em><b>Applications</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSE__APPLICATIONS = 2;
+
+	/**
 	 * The number of structural features of the '<em>Compose</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSE_FEATURE_COUNT = 2;
+	int COMPOSE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Compose</em>' class.
@@ -287,6 +314,108 @@ public interface ContainersPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link containers.impl.ApplicationImpl <em>Application</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see containers.impl.ApplicationImpl
+	 * @see containers.impl.ContainersPackageImpl#getApplication()
+	 * @generated
+	 */
+	int APPLICATION = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__ID = NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__LOCATION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Application</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Application</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link containers.impl.ENKVImpl <em>ENKV</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see containers.impl.ENKVImpl
+	 * @see containers.impl.ContainersPackageImpl#getENKV()
+	 * @generated
+	 */
+	int ENKV = 5;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENKV__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENKV__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>ENKV</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENKV_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>ENKV</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENKV_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link containers.Service <em>Service</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -317,6 +446,28 @@ public interface ContainersPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getService_Image();
+
+	/**
+	 * Returns the meta object for the reference '{@link containers.Service#getApp <em>App</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>App</em>'.
+	 * @see containers.Service#getApp()
+	 * @see #getService()
+	 * @generated
+	 */
+	EReference getService_App();
+
+	/**
+	 * Returns the meta object for the map '{@link containers.Service#getEnvs <em>Envs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Envs</em>'.
+	 * @see containers.Service#getEnvs()
+	 * @see #getService()
+	 * @generated
+	 */
+	EReference getService_Envs();
 
 	/**
 	 * Returns the meta object for the attribute '{@link containers.Service#getHost_port <em>Host port</em>}'.
@@ -405,6 +556,17 @@ public interface ContainersPackage extends EPackage {
 	EReference getCompose_Images();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link containers.Compose#getApplications <em>Applications</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Applications</em>'.
+	 * @see containers.Compose#getApplications()
+	 * @see #getCompose()
+	 * @generated
+	 */
+	EReference getCompose_Applications();
+
+	/**
 	 * Returns the meta object for class '{@link containers.Image <em>Image</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -424,6 +586,61 @@ public interface ContainersPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getImage_ImageID();
+
+	/**
+	 * Returns the meta object for class '{@link containers.Application <em>Application</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Application</em>'.
+	 * @see containers.Application
+	 * @generated
+	 */
+	EClass getApplication();
+
+	/**
+	 * Returns the meta object for the attribute '{@link containers.Application#getLocation <em>Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Location</em>'.
+	 * @see containers.Application#getLocation()
+	 * @see #getApplication()
+	 * @generated
+	 */
+	EAttribute getApplication_Location();
+
+	/**
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>ENKV</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>ENKV</em>'.
+	 * @see java.util.Map.Entry
+	 * @model keyDataType="org.eclipse.emf.ecore.EString"
+	 *        valueDataType="org.eclipse.emf.ecore.EString"
+	 * @generated
+	 */
+	EClass getENKV();
+
+	/**
+	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getENKV()
+	 * @generated
+	 */
+	EAttribute getENKV_Key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getENKV()
+	 * @generated
+	 */
+	EAttribute getENKV_Value();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -473,6 +690,22 @@ public interface ContainersPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SERVICE__IMAGE = eINSTANCE.getService_Image();
+
+		/**
+		 * The meta object literal for the '<em><b>App</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVICE__APP = eINSTANCE.getService_App();
+
+		/**
+		 * The meta object literal for the '<em><b>Envs</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVICE__ENVS = eINSTANCE.getService_Envs();
 
 		/**
 		 * The meta object literal for the '<em><b>Host port</b></em>' attribute feature.
@@ -543,6 +776,14 @@ public interface ContainersPackage extends EPackage {
 		EReference COMPOSE__IMAGES = eINSTANCE.getCompose_Images();
 
 		/**
+		 * The meta object literal for the '<em><b>Applications</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPOSE__APPLICATIONS = eINSTANCE.getCompose_Applications();
+
+		/**
 		 * The meta object literal for the '{@link containers.impl.ImageImpl <em>Image</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -559,6 +800,50 @@ public interface ContainersPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute IMAGE__IMAGE_ID = eINSTANCE.getImage_ImageID();
+
+		/**
+		 * The meta object literal for the '{@link containers.impl.ApplicationImpl <em>Application</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see containers.impl.ApplicationImpl
+		 * @see containers.impl.ContainersPackageImpl#getApplication()
+		 * @generated
+		 */
+		EClass APPLICATION = eINSTANCE.getApplication();
+
+		/**
+		 * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPLICATION__LOCATION = eINSTANCE.getApplication_Location();
+
+		/**
+		 * The meta object literal for the '{@link containers.impl.ENKVImpl <em>ENKV</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see containers.impl.ENKVImpl
+		 * @see containers.impl.ContainersPackageImpl#getENKV()
+		 * @generated
+		 */
+		EClass ENKV = eINSTANCE.getENKV();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENKV__KEY = eINSTANCE.getENKV_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENKV__VALUE = eINSTANCE.getENKV_Value();
 
 	}
 

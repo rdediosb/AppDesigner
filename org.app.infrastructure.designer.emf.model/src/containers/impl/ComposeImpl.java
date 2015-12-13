@@ -2,6 +2,7 @@
  */
 package containers.impl;
 
+import containers.Application;
 import containers.Compose;
 import containers.ContainersPackage;
 import containers.Image;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link containers.impl.ComposeImpl#getServices <em>Services</em>}</li>
  *   <li>{@link containers.impl.ComposeImpl#getImages <em>Images</em>}</li>
+ *   <li>{@link containers.impl.ComposeImpl#getApplications <em>Applications</em>}</li>
  * </ul>
  *
  * @generated
@@ -55,6 +57,16 @@ public class ComposeImpl extends MinimalEObjectImpl.Container implements Compose
 	 * @ordered
 	 */
 	protected EList<Image> images;
+
+	/**
+	 * The cached value of the '{@link #getApplications() <em>Applications</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApplications()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Application> applications;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,6 +116,18 @@ public class ComposeImpl extends MinimalEObjectImpl.Container implements Compose
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Application> getApplications() {
+		if (applications == null) {
+			applications = new EObjectContainmentEList<Application>(Application.class, this, ContainersPackage.COMPOSE__APPLICATIONS);
+		}
+		return applications;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -111,6 +135,8 @@ public class ComposeImpl extends MinimalEObjectImpl.Container implements Compose
 				return ((InternalEList<?>)getServices()).basicRemove(otherEnd, msgs);
 			case ContainersPackage.COMPOSE__IMAGES:
 				return ((InternalEList<?>)getImages()).basicRemove(otherEnd, msgs);
+			case ContainersPackage.COMPOSE__APPLICATIONS:
+				return ((InternalEList<?>)getApplications()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -127,6 +153,8 @@ public class ComposeImpl extends MinimalEObjectImpl.Container implements Compose
 				return getServices();
 			case ContainersPackage.COMPOSE__IMAGES:
 				return getImages();
+			case ContainersPackage.COMPOSE__APPLICATIONS:
+				return getApplications();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -148,6 +176,10 @@ public class ComposeImpl extends MinimalEObjectImpl.Container implements Compose
 				getImages().clear();
 				getImages().addAll((Collection<? extends Image>)newValue);
 				return;
+			case ContainersPackage.COMPOSE__APPLICATIONS:
+				getApplications().clear();
+				getApplications().addAll((Collection<? extends Application>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -166,6 +198,9 @@ public class ComposeImpl extends MinimalEObjectImpl.Container implements Compose
 			case ContainersPackage.COMPOSE__IMAGES:
 				getImages().clear();
 				return;
+			case ContainersPackage.COMPOSE__APPLICATIONS:
+				getApplications().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -182,6 +217,8 @@ public class ComposeImpl extends MinimalEObjectImpl.Container implements Compose
 				return services != null && !services.isEmpty();
 			case ContainersPackage.COMPOSE__IMAGES:
 				return images != null && !images.isEmpty();
+			case ContainersPackage.COMPOSE__APPLICATIONS:
+				return applications != null && !applications.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

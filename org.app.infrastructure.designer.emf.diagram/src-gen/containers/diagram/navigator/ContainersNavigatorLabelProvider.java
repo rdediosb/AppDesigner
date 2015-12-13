@@ -16,6 +16,9 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 
+import containers.Application;
+import containers.diagram.edit.parts.ApplicationEditPart;
+import containers.diagram.edit.parts.ApplicationNameEditPart;
 import containers.diagram.edit.parts.ComposeEditPart;
 import containers.diagram.edit.parts.ServiceEditPart;
 import containers.diagram.edit.parts.ServiceLinkEditPart;
@@ -84,6 +87,9 @@ public class ContainersNavigatorLabelProvider extends LabelProvider
 		case ServiceEditPart.VISUAL_ID:
 			return getImage("Navigator?TopLevelNode?https://github.com/rdediosb/AppDesigner?Service", //$NON-NLS-1$
 					ContainersElementTypes.Service_2001);
+		case ApplicationEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?https://github.com/rdediosb/AppDesigner?Application", //$NON-NLS-1$
+					ContainersElementTypes.Application_2002);
 		case ServiceLinkEditPart.VISUAL_ID:
 			return getImage("Navigator?Link?https://github.com/rdediosb/AppDesigner?Service?link", //$NON-NLS-1$
 					ContainersElementTypes.ServiceLink_4001);
@@ -141,6 +147,8 @@ public class ContainersNavigatorLabelProvider extends LabelProvider
 			return getCompose_1000Text(view);
 		case ServiceEditPart.VISUAL_ID:
 			return getService_2001Text(view);
+		case ApplicationEditPart.VISUAL_ID:
+			return getApplication_2002Text(view);
 		case ServiceLinkEditPart.VISUAL_ID:
 			return getServiceLink_4001Text(view);
 		}
@@ -166,6 +174,22 @@ public class ContainersNavigatorLabelProvider extends LabelProvider
 					ParserOptions.NONE.intValue());
 		} else {
 			ContainersDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5001); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getApplication_2002Text(View view) {
+		IParser parser = ContainersParserProvider.getParser(ContainersElementTypes.Application_2002,
+				view.getElement() != null ? view.getElement() : view,
+				ContainersVisualIDRegistry.getType(ApplicationNameEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			ContainersDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5002); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

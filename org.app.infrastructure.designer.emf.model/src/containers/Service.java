@@ -2,6 +2,8 @@
  */
 package containers;
 
+import org.eclipse.emf.common.util.EMap;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -16,6 +18,8 @@ package containers;
  *   <li>{@link containers.Service#getHost_port <em>Host port</em>}</li>
  *   <li>{@link containers.Service#getContainer_port <em>Container port</em>}</li>
  *   <li>{@link containers.Service#getImage <em>Image</em>}</li>
+ *   <li>{@link containers.Service#getApp <em>App</em>}</li>
+ *   <li>{@link containers.Service#getEnvs <em>Envs</em>}</li>
  * </ul>
  *
  * @see containers.ContainersPackage#getService()
@@ -74,6 +78,49 @@ public interface Service extends NamedElement {
 	 * @generated
 	 */
 	void setImage(String value);
+
+	/**
+	 * Returns the value of the '<em><b>App</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>App</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>App</em>' reference.
+	 * @see #setApp(Application)
+	 * @see containers.ContainersPackage#getService_App()
+	 * @model
+	 * @generated
+	 */
+	Application getApp();
+
+	/**
+	 * Sets the value of the '{@link containers.Service#getApp <em>App</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>App</em>' reference.
+	 * @see #getApp()
+	 * @generated
+	 */
+	void setApp(Application value);
+
+	/**
+	 * Returns the value of the '<em><b>Envs</b></em>' map.
+	 * The key is of type {@link java.lang.String},
+	 * and the value is of type {@link java.lang.String},
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Envs</em>' map isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Envs</em>' map.
+	 * @see containers.ContainersPackage#getService_Envs()
+	 * @model mapType="containers.ENKV<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+	 * @generated
+	 */
+	EMap<String, String> getEnvs();
 
 	/**
 	 * Returns the value of the '<em><b>Host port</b></em>' attribute.

@@ -1,19 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gmfgraph:Canvas xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition" name="containers">
-  <figures name="Default">
-    <figures xsi:type="gmfgraph:PolylineDecoration" name="ServiceLinkTargetDecoration"/>
-    <descriptors name="ServiceFigure">
-      <actualFigure xsi:type="gmfgraph:Rectangle" name="ServiceFigure">
-        <layout xsi:type="gmfgraph:FlowLayout"/>
-        <children xsi:type="gmfgraph:Label" name="ServiceNameFigure" text="&lt;...>"/>
+<gmfgraph:Canvas
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition"
+    name="containers">
+  <figures
+      name="Default">
+    <figures
+        xsi:type="gmfgraph:PolylineDecoration"
+        name="ServiceLinkTargetDecoration"/>
+    <descriptors
+        name="ServiceFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="ServiceFigure">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="ServiceNameFigure"
+            text="&lt;...>"/>
       </actualFigure>
-      <accessors figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
+      <accessors
+          figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
     </descriptors>
-    <descriptors name="ServiceLinkFigure">
-      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="ServiceLinkFigure" targetDecoration="//@figures.0/@figures.0"/>
+    <descriptors
+        name="ServiceLinkFigure">
+      <actualFigure
+          xsi:type="gmfgraph:PolylineConnection"
+          name="ServiceLinkFigure"
+          targetDecoration="//@figures.0/@figures.0"/>
+    </descriptors>
+    <descriptors
+        name="ApplicationFigure">
+      <actualFigure
+          xsi:type="gmfgraph:SVGFigure"
+          documentURI="platform:/plugin/org.app.infrastructure.designer.emf.model.edit/icons/full/obj16/example.svg">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="ApplicationName"
+            text="&lt;...>"/>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.2/@actualFigure/@children.0"/>
     </descriptors>
   </figures>
-  <nodes name="Service" figure="ServiceFigure"/>
-  <connections name="ServiceLink" figure="ServiceLinkFigure"/>
-  <labels name="ServiceName" figure="ServiceFigure" accessor="//@figures.0/@descriptors.0/@accessors.0"/>
+  <nodes
+      name="Service"
+      figure="ServiceFigure"/>
+  <nodes
+      name="Application"
+      figure="ApplicationFigure"/>
+  <connections
+      name="ServiceLink"
+      figure="ServiceLinkFigure"/>
+  <labels
+      name="ServiceName"
+      figure="ServiceFigure"
+      accessor="//@figures.0/@descriptors.0/@accessors.0"/>
+  <labels
+      name="ApplicationName"
+      figure="ApplicationFigure"
+      accessor="//@figures.0/@descriptors.2/@accessors.0"/>
 </gmfgraph:Canvas>
