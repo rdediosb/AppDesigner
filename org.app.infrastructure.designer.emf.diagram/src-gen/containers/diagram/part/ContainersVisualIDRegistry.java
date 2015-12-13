@@ -13,6 +13,8 @@ import containers.diagram.edit.parts.ApplicationEditPart;
 import containers.diagram.edit.parts.ApplicationNameEditPart;
 import containers.diagram.edit.parts.ComposeEditPart;
 import containers.diagram.edit.parts.ServiceEditPart;
+import containers.diagram.edit.parts.ServiceImageEditPart;
+import containers.diagram.edit.parts.ServiceName2EditPart;
 import containers.diagram.edit.parts.ServiceNameEditPart;
 
 /**
@@ -157,6 +159,9 @@ public class ContainersVisualIDRegistry {
 			break;
 		case ServiceEditPart.VISUAL_ID:
 			if (ServiceNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (ServiceImageEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

@@ -48,7 +48,9 @@ public class ServiceItemProvider extends NamedElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addHost_portPropertyDescriptor(object);
+			addContainer_portPropertyDescriptor(object);
 			addImagePropertyDescriptor(object);
+			addEnvsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -71,6 +73,28 @@ public class ServiceItemProvider extends NamedElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Envs feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnvsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Service_envs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Service_envs_feature", "_UI_Service_type"),
+				 ContainersPackage.Literals.SERVICE__ENVS,
+				 true,
+				 false,
+				 false,
+				 null,
 				 null,
 				 null));
 	}
@@ -120,6 +144,28 @@ public class ServiceItemProvider extends NamedElementItemProvider {
 				 getString("_UI_Service_host_port_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Service_host_port_feature", "_UI_Service_type"),
 				 ContainersPackage.Literals.SERVICE__HOST_PORT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Container port feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addContainer_portPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Service_container_port_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Service_container_port_feature", "_UI_Service_type"),
+				 ContainersPackage.Literals.SERVICE__CONTAINER_PORT,
 				 true,
 				 false,
 				 false,

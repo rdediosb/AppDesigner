@@ -1,12 +1,14 @@
 
 package containers.diagram.part;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.ToolEntry;
+import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.tooling.runtime.part.DefaultLinkToolEntry;
 import org.eclipse.gmf.tooling.runtime.part.DefaultNodeToolEntry;
 
@@ -53,8 +55,11 @@ public class ContainersPaletteFactory {
 	* @generated
 	*/
 	private ToolEntry createLink2CreationTool() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+		types.add(ContainersElementTypes.ServiceLink_4001);
+		types.add(ContainersElementTypes.ServiceApp_4002);
 		DefaultLinkToolEntry entry = new DefaultLinkToolEntry(Messages.Link2CreationTool_title,
-				Messages.Link2CreationTool_desc, Collections.singletonList(ContainersElementTypes.ServiceLink_4001));
+				Messages.Link2CreationTool_desc, types);
 		entry.setId("createLink2CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(ContainersDiagramEditorPlugin
 				.findImageDescriptor("/org.app.infrastructure.designer.emf.model.edit/icons/full/obj16/Link.gif")); //$NON-NLS-1$
@@ -70,8 +75,8 @@ public class ContainersPaletteFactory {
 				Messages.Application3CreationTool_desc,
 				Collections.singletonList(ContainersElementTypes.Application_2002));
 		entry.setId("createApplication3CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(ContainersDiagramEditorPlugin
-				.findImageDescriptor("/org.app.infrastructure.designer.emf.model.edit/icons/full/obj16/Link.gif")); //$NON-NLS-1$
+		entry.setSmallIcon(ContainersDiagramEditorPlugin.findImageDescriptor(
+				"/org.app.infrastructure.designer.emf.model.edit/icons/full/obj16/Application.gif")); //$NON-NLS-1$
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

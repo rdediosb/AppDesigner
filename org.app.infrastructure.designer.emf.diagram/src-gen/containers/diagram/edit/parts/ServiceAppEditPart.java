@@ -9,24 +9,24 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ITreeBranchEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.swt.graphics.Color;
-import containers.diagram.edit.policies.ServiceLinkItemSemanticEditPolicy;
+
+import containers.diagram.edit.policies.ServiceAppItemSemanticEditPolicy;
 
 /**
  * @generated
  */
-public class ServiceLinkEditPart extends ConnectionNodeEditPart implements ITreeBranchEditPart {
+public class ServiceAppEditPart extends ConnectionNodeEditPart implements ITreeBranchEditPart {
 
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 4001;
+	public static final int VISUAL_ID = 4002;
 
 	/**
 	* @generated
 	*/
-	public ServiceLinkEditPart(View view) {
+	public ServiceAppEditPart(View view) {
 		super(view);
 	}
 
@@ -35,7 +35,7 @@ public class ServiceLinkEditPart extends ConnectionNodeEditPart implements ITree
 	*/
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ServiceLinkItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ServiceAppItemSemanticEditPolicy());
 	}
 
 	/**
@@ -85,8 +85,8 @@ public class ServiceLinkEditPart extends ConnectionNodeEditPart implements ITree
 	}
 
 	/**
-	* @generated
-	*/
+	 * @generated
+	 */
 	static final Color THIS_FORE = new Color(null, 20, 20, 20);
 
 }

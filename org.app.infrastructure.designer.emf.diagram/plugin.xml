@@ -218,7 +218,7 @@
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Containers"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001,4002"/>
       </viewProvider>
    </extension>
 
@@ -233,10 +233,10 @@
             <method name="getType()" value="2001,2002"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
-            <method name="getType()" value="4001"/>
+            <method name="getType()" value="4001,4002"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5001,5002"/>
+            <method name="getType()" value="5001,5003,5002"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
             <method name="getType()" value=""/>
@@ -322,6 +322,15 @@
             <param name="semanticHint" value="4001"/>
          </specializationType>
       </metamodel>
+      <metamodel nsURI="https://github.com/rdediosb/AppDesigner">
+         <specializationType
+               id="org.app.infrastructure.designer.emf.diagram.ServiceApp_4002"
+               name="%metatype.name.ServiceApp_4002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <param name="semanticHint" value="4002"/>
+         </specializationType>
+      </metamodel>
    </extension>
 
    <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings" id="element-types-bindings">
@@ -338,6 +347,7 @@
          <elementType ref="org.app.infrastructure.designer.emf.diagram.Service_2001"/>
          <elementType ref="org.app.infrastructure.designer.emf.diagram.Application_2002"/>
          <elementType ref="org.app.infrastructure.designer.emf.diagram.ServiceLink_4001"/>
+         <elementType ref="org.app.infrastructure.designer.emf.diagram.ServiceApp_4002"/>
          <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
       </binding>
    </extension>

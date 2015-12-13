@@ -19,6 +19,7 @@ import containers.ContainersPackage;
 import containers.Service;
 import containers.diagram.edit.parts.ApplicationEditPart;
 import containers.diagram.edit.parts.ComposeEditPart;
+import containers.diagram.edit.parts.ServiceAppEditPart;
 import containers.diagram.edit.parts.ServiceEditPart;
 import containers.diagram.edit.parts.ServiceLinkEditPart;
 import containers.diagram.providers.ContainersElementTypes;
@@ -122,12 +123,13 @@ public class ContainersDiagramUpdater {
 		Service modelElement = (Service) view.getElement();
 		LinkedList<ContainersLinkDescriptor> result = new LinkedList<ContainersLinkDescriptor>();
 		result.addAll(getOutgoingFeatureModelFacetLinks_Service_Link_4001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_Service_App_4002(modelElement));
 		return result;
 	}
 
 	/**
-	* @generated
-	*/
+	 * @generated
+	 */
 	public static List<ContainersLinkDescriptor> getApplication_2002ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
@@ -145,10 +147,15 @@ public class ContainersDiagramUpdater {
 	}
 
 	/**
-	* @generated
-	*/
+	 * @generated
+	 */
 	public static List<ContainersLinkDescriptor> getApplication_2002IncomingLinks(View view) {
-		return Collections.emptyList();
+		Application modelElement = (Application) view.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<ContainersLinkDescriptor> result = new LinkedList<ContainersLinkDescriptor>();
+		result.addAll(getIncomingFeatureModelFacetLinks_Service_App_4002(modelElement, crossReferences));
+		return result;
 	}
 
 	/**
@@ -158,12 +165,13 @@ public class ContainersDiagramUpdater {
 		Service modelElement = (Service) view.getElement();
 		LinkedList<ContainersLinkDescriptor> result = new LinkedList<ContainersLinkDescriptor>();
 		result.addAll(getOutgoingFeatureModelFacetLinks_Service_Link_4001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_Service_App_4002(modelElement));
 		return result;
 	}
 
 	/**
-	* @generated
-	*/
+	 * @generated
+	 */
 	public static List<ContainersLinkDescriptor> getApplication_2002OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
@@ -187,6 +195,22 @@ public class ContainersDiagramUpdater {
 	/**
 	* @generated
 	*/
+	private static Collection<ContainersLinkDescriptor> getIncomingFeatureModelFacetLinks_Service_App_4002(
+			Application target, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<ContainersLinkDescriptor> result = new LinkedList<ContainersLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
+			if (setting.getEStructuralFeature() == ContainersPackage.eINSTANCE.getService_App()) {
+				result.add(new ContainersLinkDescriptor(setting.getEObject(), target,
+						ContainersElementTypes.ServiceApp_4002, ServiceAppEditPart.VISUAL_ID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
 	private static Collection<ContainersLinkDescriptor> getOutgoingFeatureModelFacetLinks_Service_Link_4001(
 			Service source) {
 		LinkedList<ContainersLinkDescriptor> result = new LinkedList<ContainersLinkDescriptor>();
@@ -196,6 +220,21 @@ public class ContainersDiagramUpdater {
 		}
 		result.add(new ContainersLinkDescriptor(source, destination, ContainersElementTypes.ServiceLink_4001,
 				ServiceLinkEditPart.VISUAL_ID));
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	private static Collection<ContainersLinkDescriptor> getOutgoingFeatureModelFacetLinks_Service_App_4002(
+			Service source) {
+		LinkedList<ContainersLinkDescriptor> result = new LinkedList<ContainersLinkDescriptor>();
+		Application destination = source.getApp();
+		if (destination == null) {
+			return result;
+		}
+		result.add(new ContainersLinkDescriptor(source, destination, ContainersElementTypes.ServiceApp_4002,
+				ServiceAppEditPart.VISUAL_ID));
 		return result;
 	}
 

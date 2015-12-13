@@ -15,6 +15,8 @@ import org.eclipse.gmf.runtime.notation.View;
 
 import containers.ContainersPackage;
 import containers.diagram.edit.parts.ApplicationNameEditPart;
+import containers.diagram.edit.parts.ServiceImageEditPart;
+import containers.diagram.edit.parts.ServiceName2EditPart;
 import containers.diagram.edit.parts.ServiceNameEditPart;
 import containers.diagram.parsers.MessageFormatParser;
 import containers.diagram.part.ContainersVisualIDRegistry;
@@ -27,18 +29,35 @@ public class ContainersParserProvider extends AbstractProvider implements IParse
 	/**
 	* @generated
 	*/
-	private IParser serviceImage_5001Parser;
+	private IParser serviceName_5001Parser;
 
 	/**
 	* @generated
 	*/
-	private IParser getServiceImage_5001Parser() {
-		if (serviceImage_5001Parser == null) {
+	private IParser getServiceName_5001Parser() {
+		if (serviceName_5001Parser == null) {
+			EAttribute[] features = new EAttribute[] { ContainersPackage.eINSTANCE.getNamedElement_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			serviceName_5001Parser = parser;
+		}
+		return serviceName_5001Parser;
+	}
+
+	/**
+	* @generated
+	*/
+	private IParser serviceImage_5003Parser;
+
+	/**
+	* @generated
+	*/
+	private IParser getServiceImage_5003Parser() {
+		if (serviceImage_5003Parser == null) {
 			EAttribute[] features = new EAttribute[] { ContainersPackage.eINSTANCE.getService_Image() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			serviceImage_5001Parser = parser;
+			serviceImage_5003Parser = parser;
 		}
-		return serviceImage_5001Parser;
+		return serviceImage_5003Parser;
 	}
 
 	/**
@@ -64,7 +83,9 @@ public class ContainersParserProvider extends AbstractProvider implements IParse
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
 		case ServiceNameEditPart.VISUAL_ID:
-			return getServiceImage_5001Parser();
+			return getServiceName_5001Parser();
+		case ServiceImageEditPart.VISUAL_ID:
+			return getServiceImage_5003Parser();
 		case ApplicationNameEditPart.VISUAL_ID:
 			return getApplicationName_5002Parser();
 		}

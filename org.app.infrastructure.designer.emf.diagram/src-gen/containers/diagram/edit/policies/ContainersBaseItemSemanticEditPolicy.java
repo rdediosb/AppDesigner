@@ -32,6 +32,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.helpers.GeneratedEditHelperBase;
 
+import containers.Application;
 import containers.Service;
 import containers.diagram.part.ContainersDiagramEditorPlugin;
 import containers.diagram.part.ContainersVisualIDRegistry;
@@ -319,7 +320,27 @@ public class ContainersBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		* @generated
 		*/
+		public boolean canCreateServiceApp_4002(Service source, Application target) {
+			if (source != null) {
+				if (source.getApp() != null) {
+					return false;
+				}
+			}
+
+			return canExistServiceApp_4002(source, target);
+		}
+
+		/**
+				* @generated
+				*/
 		public boolean canExistServiceLink_4001(Service source, Service target) {
+			return true;
+		}
+
+		/**
+		* @generated
+		*/
+		public boolean canExistServiceApp_4002(Service source, Application target) {
 			return true;
 		}
 	}

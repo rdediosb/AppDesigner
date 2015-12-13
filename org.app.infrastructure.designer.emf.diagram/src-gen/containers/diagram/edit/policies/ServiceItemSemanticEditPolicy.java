@@ -15,8 +15,11 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientReferenceRelations
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 
+import containers.diagram.edit.commands.ServiceAppCreateCommand;
+import containers.diagram.edit.commands.ServiceAppReorientCommand;
 import containers.diagram.edit.commands.ServiceLinkCreateCommand;
 import containers.diagram.edit.commands.ServiceLinkReorientCommand;
+import containers.diagram.edit.parts.ServiceAppEditPart;
 import containers.diagram.edit.parts.ServiceLinkEditPart;
 import containers.diagram.part.ContainersVisualIDRegistry;
 import containers.diagram.providers.ContainersElementTypes;
@@ -59,6 +62,13 @@ public class ServiceItemSemanticEditPolicy extends ContainersBaseItemSemanticEdi
 				cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 				continue;
 			}
+			if (ContainersVisualIDRegistry.getVisualID(outgoingLink) == ServiceAppEditPart.VISUAL_ID) {
+				DestroyReferenceRequest r = new DestroyReferenceRequest(outgoingLink.getSource().getElement(), null,
+						outgoingLink.getTarget().getElement(), false);
+				cmd.add(new DestroyReferenceCommand(r));
+				cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
+				continue;
+			}
 		}
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {
@@ -88,6 +98,9 @@ public class ServiceItemSemanticEditPolicy extends ContainersBaseItemSemanticEdi
 		if (ContainersElementTypes.ServiceLink_4001 == req.getElementType()) {
 			return getGEFWrapper(new ServiceLinkCreateCommand(req, req.getSource(), req.getTarget()));
 		}
+		if (ContainersElementTypes.ServiceApp_4002 == req.getElementType()) {
+			return getGEFWrapper(new ServiceAppCreateCommand(req, req.getSource(), req.getTarget()));
+		}
 		return null;
 	}
 
@@ -97,6 +110,9 @@ public class ServiceItemSemanticEditPolicy extends ContainersBaseItemSemanticEdi
 	protected Command getCompleteCreateRelationshipCommand(CreateRelationshipRequest req) {
 		if (ContainersElementTypes.ServiceLink_4001 == req.getElementType()) {
 			return getGEFWrapper(new ServiceLinkCreateCommand(req, req.getSource(), req.getTarget()));
+		}
+		if (ContainersElementTypes.ServiceApp_4002 == req.getElementType()) {
+			return null;
 		}
 		return null;
 	}
@@ -111,6 +127,8 @@ public class ServiceItemSemanticEditPolicy extends ContainersBaseItemSemanticEdi
 		switch (getVisualID(req)) {
 		case ServiceLinkEditPart.VISUAL_ID:
 			return getGEFWrapper(new ServiceLinkReorientCommand(req));
+		case ServiceAppEditPart.VISUAL_ID:
+			return getGEFWrapper(new ServiceAppReorientCommand(req));
 		}
 		return super.getReorientReferenceRelationshipCommand(req);
 	}

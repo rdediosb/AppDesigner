@@ -13,14 +13,24 @@
     <descriptors
         name="ServiceFigure">
       <actualFigure
-          xsi:type="gmfgraph:Rectangle"
-          name="ServiceFigure">
+          xsi:type="gmfgraph:SVGFigure"
+          documentURI="platform:/plugin/org.app.infrastructure.designer.emf.model.edit/icons/full/obj16/docker.svg">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
+        <minimumSize
+            dx="112"
+            dy="85"/>
         <children
             xsi:type="gmfgraph:Label"
-            name="ServiceNameFigure"
-            text="&lt;...>"/>
+            name="ServiceImage"
+            text="&lt;click here...>">
+          <font
+              xsi:type="gmfgraph:BasicFont"
+              height="11"/>
+          <insets
+              top="3"
+              left="10"/>
+        </children>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
@@ -30,22 +40,53 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="ServiceLinkFigure"
-          targetDecoration="//@figures.0/@figures.0"/>
+          lineWidth="2"
+          lineKind="LINE_DASH"
+          targetDecoration="//@figures.0/@figures.0">
+        <foregroundColor
+            xsi:type="gmfgraph:RGBColor"
+            red="20"
+            green="20"
+            blue="20"/>
+      </actualFigure>
     </descriptors>
     <descriptors
         name="ApplicationFigure">
       <actualFigure
           xsi:type="gmfgraph:SVGFigure"
-          documentURI="platform:/plugin/org.app.infrastructure.designer.emf.model.edit/icons/full/obj16/example.svg">
+          documentURI="platform:/plugin/org.app.infrastructure.designer.emf.model.edit/icons/full/obj16/component.svg">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
+        <minimumSize
+            dx="112"
+            dy="85"/>
         <children
             xsi:type="gmfgraph:Label"
             name="ApplicationName"
-            text="&lt;...>"/>
+            text="&lt;...>">
+          <font
+              xsi:type="gmfgraph:BasicFont"
+              height="10"/>
+          <insets
+              top="8"
+              left="15"/>
+        </children>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.2/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors
+        name="ServiceNameLabel">
+      <actualFigure
+          xsi:type="gmfgraph:Label"
+          name="ServiceName"
+          text="&lt;Name...>">
+        <font
+            xsi:type="gmfgraph:BasicFont"
+            faceName=""
+            height="12"
+            style="BOLD"/>
+      </actualFigure>
     </descriptors>
   </figures>
   <nodes
@@ -58,11 +99,19 @@
       name="ServiceLink"
       figure="ServiceLinkFigure"/>
   <labels
-      name="ServiceName"
+      name="ServiceImage"
       figure="ServiceFigure"
+      elementIcon="false"
       accessor="//@figures.0/@descriptors.0/@accessors.0"/>
   <labels
       name="ApplicationName"
       figure="ApplicationFigure"
+      elementIcon="false"
       accessor="//@figures.0/@descriptors.2/@accessors.0"/>
+  <labels
+      name="ServiceName"
+      figure="ServiceNameLabel"
+      resizeConstraint="NORTH"
+      affixedParentSide="SOUTH"
+      elementIcon="false"/>
 </gmfgraph:Canvas>

@@ -16,10 +16,10 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 
-import containers.Application;
 import containers.diagram.edit.parts.ApplicationEditPart;
 import containers.diagram.edit.parts.ApplicationNameEditPart;
 import containers.diagram.edit.parts.ComposeEditPart;
+import containers.diagram.edit.parts.ServiceAppEditPart;
 import containers.diagram.edit.parts.ServiceEditPart;
 import containers.diagram.edit.parts.ServiceLinkEditPart;
 import containers.diagram.edit.parts.ServiceNameEditPart;
@@ -93,6 +93,9 @@ public class ContainersNavigatorLabelProvider extends LabelProvider
 		case ServiceLinkEditPart.VISUAL_ID:
 			return getImage("Navigator?Link?https://github.com/rdediosb/AppDesigner?Service?link", //$NON-NLS-1$
 					ContainersElementTypes.ServiceLink_4001);
+		case ServiceAppEditPart.VISUAL_ID:
+			return getImage("Navigator?Link?https://github.com/rdediosb/AppDesigner?Service?app", //$NON-NLS-1$
+					ContainersElementTypes.ServiceApp_4002);
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -151,6 +154,8 @@ public class ContainersNavigatorLabelProvider extends LabelProvider
 			return getApplication_2002Text(view);
 		case ServiceLinkEditPart.VISUAL_ID:
 			return getServiceLink_4001Text(view);
+		case ServiceAppEditPart.VISUAL_ID:
+			return getServiceApp_4002Text(view);
 		}
 		return getUnknownElementText(view);
 	}
@@ -198,6 +203,13 @@ public class ContainersNavigatorLabelProvider extends LabelProvider
 	* @generated
 	*/
 	private String getServiceLink_4001Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	* @generated
+	*/
+	private String getServiceApp_4002Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 

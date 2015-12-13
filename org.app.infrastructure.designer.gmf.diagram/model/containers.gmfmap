@@ -17,6 +17,13 @@
         <diagramLabel
             href="containers.gmfgraph#ServiceName"/>
         <features
+            href="../../org.app.infrastructure.designer.emf.model/model/containers.ecore#//NamedElement/name"/>
+      </labelMappings>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="containers.gmfgraph#ServiceImage"/>
+        <features
             href="../../org.app.infrastructure.designer.emf.model/model/containers.ecore#//Service/image"/>
       </labelMappings>
       <tool
@@ -58,6 +65,16 @@
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="../../org.app.infrastructure.designer.emf.model/model/containers.ecore#//Service/link"/>
+  </links>
+  <links>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="containers.gmftool#//@palette/@tools.0/@tools.1"/>
+    <diagramLink
+        href="containers.gmfgraph#ServiceLink"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="../../org.app.infrastructure.designer.emf.model/model/containers.ecore#//Service/app"/>
   </links>
   <diagram>
     <diagramCanvas

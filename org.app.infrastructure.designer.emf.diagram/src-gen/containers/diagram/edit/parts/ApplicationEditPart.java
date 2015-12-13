@@ -2,8 +2,10 @@ package containers.diagram.edit.parts;
 
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -21,8 +23,11 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.lite.svg.SVGFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.widgets.Display;
 import containers.diagram.edit.policies.ApplicationItemSemanticEditPolicy;
 import containers.diagram.part.ContainersVisualIDRegistry;
 
@@ -267,7 +272,9 @@ public class ApplicationEditPart extends ShapeNodeEditPart {
 
 			this.setLayoutManager(layoutThis);
 
-			this.setURI("platform:/plugin/org.app.infrastructure.designer.emf.model.edit/icons/full/obj16/example.svg");
+			this.setURI(
+					"platform:/plugin/org.app.infrastructure.designer.emf.model.edit/icons/full/obj16/component.svg");
+			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(112), getMapMode().DPtoLP(85)));
 			createContents();
 		}
 
@@ -279,6 +286,11 @@ public class ApplicationEditPart extends ShapeNodeEditPart {
 			fFigureApplicationName = new WrappingLabel();
 
 			fFigureApplicationName.setText("<...>");
+
+			fFigureApplicationName.setFont(FFIGUREAPPLICATIONNAME_FONT);
+
+			fFigureApplicationName.setBorder(new MarginBorder(getMapMode().DPtoLP(8), getMapMode().DPtoLP(15),
+					getMapMode().DPtoLP(0), getMapMode().DPtoLP(0)));
 
 			this.add(fFigureApplicationName);
 
@@ -292,5 +304,11 @@ public class ApplicationEditPart extends ShapeNodeEditPart {
 		}
 
 	}
+
+	/**
+	* @generated
+	*/
+	static final Font FFIGUREAPPLICATIONNAME_FONT = new Font(Display.getCurrent(),
+			Display.getDefault().getSystemFont().getFontData()[0].getName(), 10, SWT.NORMAL);
 
 }

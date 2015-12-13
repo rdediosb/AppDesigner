@@ -25,6 +25,7 @@ import org.eclipse.ui.navigator.ICommonContentProvider;
 
 import containers.diagram.edit.parts.ApplicationEditPart;
 import containers.diagram.edit.parts.ComposeEditPart;
+import containers.diagram.edit.parts.ServiceAppEditPart;
 import containers.diagram.edit.parts.ServiceEditPart;
 import containers.diagram.edit.parts.ServiceLinkEditPart;
 import containers.diagram.part.ContainersVisualIDRegistry;
@@ -225,6 +226,9 @@ public class ContainersNavigatorContentProvider implements ICommonContentProvide
 			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
 					ContainersVisualIDRegistry.getType(ServiceLinkEditPart.VISUAL_ID));
 			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+					ContainersVisualIDRegistry.getType(ServiceAppEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
 			if (!links.isEmpty()) {
 				result.add(links);
 			}
@@ -247,11 +251,30 @@ public class ContainersNavigatorContentProvider implements ICommonContentProvide
 			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
 					ContainersVisualIDRegistry.getType(ServiceLinkEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					ContainersVisualIDRegistry.getType(ServiceAppEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
 				result.add(incominglinks);
 			}
 			if (!outgoinglinks.isEmpty()) {
 				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case ApplicationEditPart.VISUAL_ID: {
+			LinkedList<ContainersAbstractNavigatorItem> result = new LinkedList<ContainersAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			ContainersNavigatorGroup incominglinks = new ContainersNavigatorGroup(
+					Messages.NavigatorGroupName_Application_2002_incominglinks, "icons/incomingLinksNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					ContainersVisualIDRegistry.getType(ServiceAppEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
 			}
 			return result.toArray();
 		}
@@ -268,6 +291,31 @@ public class ContainersNavigatorContentProvider implements ICommonContentProvide
 			Collection<View> connectedViews;
 			connectedViews = getLinksTargetByType(Collections.singleton(sv),
 					ContainersVisualIDRegistry.getType(ServiceEditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target, true));
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
+					ContainersVisualIDRegistry.getType(ServiceEditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source, true));
+			if (!target.isEmpty()) {
+				result.add(target);
+			}
+			if (!source.isEmpty()) {
+				result.add(source);
+			}
+			return result.toArray();
+		}
+
+		case ServiceAppEditPart.VISUAL_ID: {
+			LinkedList<ContainersAbstractNavigatorItem> result = new LinkedList<ContainersAbstractNavigatorItem>();
+			Edge sv = (Edge) view;
+			ContainersNavigatorGroup target = new ContainersNavigatorGroup(
+					Messages.NavigatorGroupName_ServiceApp_4002_target, "icons/linkTargetNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
+			ContainersNavigatorGroup source = new ContainersNavigatorGroup(
+					Messages.NavigatorGroupName_ServiceApp_4002_source, "icons/linkSourceNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
+			Collection<View> connectedViews;
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					ContainersVisualIDRegistry.getType(ApplicationEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target, true));
 			connectedViews = getLinksSourceByType(Collections.singleton(sv),
 					ContainersVisualIDRegistry.getType(ServiceEditPart.VISUAL_ID));

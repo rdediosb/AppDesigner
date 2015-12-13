@@ -52,12 +52,12 @@ import containers.diagram.providers.ContainersParserProvider;
 /**
  * @generated
  */
-public class ApplicationNameEditPart extends CompartmentEditPart implements ITextAwareEditPart {
+public class ServiceImageEditPart extends CompartmentEditPart implements ITextAwareEditPart {
 
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 5002;
+	public static final int VISUAL_ID = 5003;
 
 	/**
 	* @generated
@@ -87,7 +87,7 @@ public class ApplicationNameEditPart extends CompartmentEditPart implements ITex
 	/**
 	* @generated
 	*/
-	public ApplicationNameEditPart(View view) {
+	public ServiceImageEditPart(View view) {
 		super(view);
 	}
 
@@ -287,9 +287,8 @@ public class ApplicationNameEditPart extends CompartmentEditPart implements ITex
 	*/
 	public IParser getParser() {
 		if (parser == null) {
-			parser = ContainersParserProvider.getParser(ContainersElementTypes.Application_2002, getParserElement(),
-					ContainersVisualIDRegistry
-							.getType(containers.diagram.edit.parts.ApplicationNameEditPart.VISUAL_ID));
+			parser = ContainersParserProvider.getParser(ContainersElementTypes.Service_2001, getParserElement(),
+					ContainersVisualIDRegistry.getType(containers.diagram.edit.parts.ServiceImageEditPart.VISUAL_ID));
 		}
 		return parser;
 	}

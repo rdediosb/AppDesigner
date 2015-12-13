@@ -33,7 +33,7 @@
           description="Create Application Component">
         <smallIcon
             xsi:type="gmftool:BundleImage"
-            path="/icons/full/obj16/Link.gif"
+            path="/icons/full/obj16/Application.gif"
             bundle="org.app.infrastructure.designer.emf.model.edit"/>
       </tools>
     </tools>

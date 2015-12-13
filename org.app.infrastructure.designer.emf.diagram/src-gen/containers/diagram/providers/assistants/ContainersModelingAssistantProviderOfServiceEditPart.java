@@ -8,6 +8,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 
+import containers.diagram.edit.parts.ApplicationEditPart;
 import containers.diagram.edit.parts.ServiceEditPart;
 import containers.diagram.providers.ContainersElementTypes;
 import containers.diagram.providers.ContainersModelingAssistantProvider;
@@ -31,8 +32,9 @@ public class ContainersModelingAssistantProviderOfServiceEditPart extends Contai
 	* @generated
 	*/
 	public List<IElementType> doGetRelTypesOnSource(ServiceEditPart source) {
-		List<IElementType> types = new ArrayList<IElementType>(1);
+		List<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(ContainersElementTypes.ServiceLink_4001);
+		types.add(ContainersElementTypes.ServiceApp_4002);
 		return types;
 	}
 
@@ -56,6 +58,9 @@ public class ContainersModelingAssistantProviderOfServiceEditPart extends Contai
 		if (targetEditPart instanceof ServiceEditPart) {
 			types.add(ContainersElementTypes.ServiceLink_4001);
 		}
+		if (targetEditPart instanceof ApplicationEditPart) {
+			types.add(ContainersElementTypes.ServiceApp_4002);
+		}
 		return types;
 	}
 
@@ -76,6 +81,8 @@ public class ContainersModelingAssistantProviderOfServiceEditPart extends Contai
 		List<IElementType> types = new ArrayList<IElementType>();
 		if (relationshipType == ContainersElementTypes.ServiceLink_4001) {
 			types.add(ContainersElementTypes.Service_2001);
+		} else if (relationshipType == ContainersElementTypes.ServiceApp_4002) {
+			types.add(ContainersElementTypes.Application_2002);
 		}
 		return types;
 	}

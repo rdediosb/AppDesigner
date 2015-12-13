@@ -298,12 +298,27 @@ public class Messages extends NLS {
 	/**
 	* @generated
 	*/
+	public static String NavigatorGroupName_Application_2002_incominglinks;
+
+	/**
+	* @generated
+	*/
 	public static String NavigatorGroupName_ServiceLink_4001_target;
 
 	/**
 	* @generated
 	*/
 	public static String NavigatorGroupName_ServiceLink_4001_source;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_ServiceApp_4002_target;
+
+	/**
+	* @generated
+	*/
+	public static String NavigatorGroupName_ServiceApp_4002_source;
 
 	/**
 	* @generated
