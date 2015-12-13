@@ -63,14 +63,17 @@ public class ContainersResourceImpl extends XMIResourceImpl {
     			int host_port = service.getHost_port();
     			int container_port = service.getContainer_port(); 
     			Service link = service.getLink();
-    			
-    			pw.println(name+":");
-    			pw.println("\timage: "+image);
-    			pw.println("\tports:");
-    			pw.println("\t - \""+container_port+":"+host_port+"\"");
-    			if(link != null){
-    				pw.println("\tlinks:");
-    				pw.println("\t - "+ link.getName());
+    			if(image != null){
+	    			pw.println(name+":");
+	    			pw.println("\timage: "+image);
+	    			if(container_port>0 && host_port>0){
+	    				pw.println("\tports:");
+	    				pw.println("\t - \""+container_port+":"+host_port+"\"");
+	    			}
+	    			if(link != null){
+	    				pw.println("\tlinks:");
+	    				pw.println("\t - "+ link.getName());
+	    			}
     			}
     		}
  

@@ -23,7 +23,7 @@
         <children
             xsi:type="gmfgraph:Label"
             name="ServiceImage"
-            text="&lt;click here...>">
+            text="&lt;Select image...>">
           <font
               xsi:type="gmfgraph:BasicFont"
               height="11"/>
